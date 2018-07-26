@@ -1,0 +1,20 @@
+{
+  "name": "ShareRoom",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Nguyen Thanh Tung <tungbk.devjv@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/tung3457/ShareRoom",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "git@github.com:twbs/bootstrap.git#^4.1.3"
+  }
+}
