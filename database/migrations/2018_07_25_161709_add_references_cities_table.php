@@ -28,6 +28,9 @@ class AddReferencesCitiesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('cities', function(Blueprint $table)
+        {
+            $table->dropForeign('cities_country_id_foreign');
+        });
     }
 }

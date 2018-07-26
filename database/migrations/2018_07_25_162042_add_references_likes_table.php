@@ -32,6 +32,10 @@ class AddReferencesLikesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('likes', function(Blueprint $table)
+        {
+            $table->dropForeign('likes_user_id_foreign');
+            $table->dropForeign('likes_review_id_foreign');
+        });
     }
 }

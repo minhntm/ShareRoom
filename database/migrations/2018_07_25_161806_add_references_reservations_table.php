@@ -32,6 +32,10 @@ class AddReferencesReservationsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('reservations', function(Blueprint $table)
+        {
+            $table->dropForeign('reservations_user_id_foreign');
+            $table->dropForeign('reservations_room_id_foreign');
+        });
     }
 }
