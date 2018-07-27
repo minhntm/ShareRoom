@@ -36,6 +36,11 @@ class AddReferencesRoomsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('rooms', function(Blueprint $table)
+        {
+            $table->dropForeign('rooms_room_type_foreign');
+            $table->dropForeign('rooms_owner_id_foreign');
+            $table->dropForeign('rooms_city_id_foreign');
+        });
     }
 }

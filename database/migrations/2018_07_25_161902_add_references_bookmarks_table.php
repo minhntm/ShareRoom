@@ -32,6 +32,10 @@ class AddReferencesBookmarksTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('bookmarks', function(Blueprint $table)
+        {
+            $table->dropForeign('bookmarks_user_id_foreign');
+            $table->dropForeign('bookmarks_room_id_foreign');
+        });
     }
 }

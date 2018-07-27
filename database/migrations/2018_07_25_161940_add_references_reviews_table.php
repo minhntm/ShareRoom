@@ -32,6 +32,10 @@ class AddReferencesReviewsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('reviews', function(Blueprint $table)
+        {
+            $table->dropForeign('reviews_user_id_foreign');
+            $table->dropForeign('reviews_room_id_foreign');
+        });
     }
 }
