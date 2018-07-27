@@ -12,4 +12,4 @@ npm-debug.log
 yarn-error.log
 .env
 .editorconfig
-resources/assets/bower_components
+public/bower_components
