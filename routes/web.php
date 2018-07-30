@@ -14,3 +14,4 @@
 Auth::routes();
 
 Route::get('/', 'PageController@home')->name('home');
+Route::get('/home', 'PageController@home')->name('home');

@@ -1,42 +1,40 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{{ route('home') }}">{!! trans('app.app-name') !!}</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-            <a class="nav-link" href="{{ route('home') }}">{!! trans('app.home') !!}<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">{!! trans('app.become-host') !!}</a>
-        </li>
-        @guest
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">{!! trans('app.login') !!}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('register') }}">{!! trans('app.signup') !!}</a>
-            </li>
-        @else
-        
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{ Auth::user()->name }}
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">{!! trans('app.edit-profile') !!}</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        {!! trans('app.logout') !!}
-                    </a>
-                    {!! Form::open(['url' => route('logout'), 'id' => 'logout-form']) !!}
-                    {!! Form::close() !!}
-                </div>
-            </li>
-        @endguest
-        </ul>
+<nav class="navbar navbar-default fixed-top navbar-expand-md">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{{ route('home') }}">{!! trans('app.app-name') !!}</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item"><a href="#" class="nav-link">{!! trans('app.about') !!}</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">{!! trans('app.save') !!}</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">{!! trans('app.message') !!}</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">{!! trans('app.help') !!}</a></li>
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">{!! trans('app.signin') !!}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">{!! trans('app.signup') !!}</a>
+                    </li>
+                @else
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary dropdown-toggle fix-btn-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Auth::user()->name }}
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right fix-dropdown-menu">
+                            <a class="dropdown-item fix-dropdown-item" href="#">{!! trans('app.edit-profile') !!}</a>
+                            <a class="dropdown-item fix-dropdown-item" href="#">{!! trans('app.acount-setting') !!}</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item fix-dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                {!! trans('app.logout') !!}
+                            </a>
+                            {!! Form::open(['url' => route('logout'), 'id' => 'logout-form']) !!}
+                            {!! Form::close() !!}
+                        </div>
+                    </div>
+                @endguest
+            </ul>
+        </div>
     </div>
 </nav>
