@@ -11,10 +11,10 @@
                 <li class="nav-item"><a href="#" class="nav-link">{!! trans('app.help') !!}</a></li>
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{!! trans('app.signin') !!}</a>
+                        <a class="nav-link" data-toggle="modal" data-target="#loginModal">{!! trans('app.signin') !!}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{!! trans('app.signup') !!}</a>
+                        <a class="nav-link" data-toggle="modal" data-target="#registerModal">{!! trans('app.signup') !!}</a>
                     </li>
                 @else
                     <div class="btn-group">
