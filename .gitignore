@@ -13,3 +13,4 @@ yarn-error.log
 .env
 .editorconfig
 public/bower_components
+.DS_Store
