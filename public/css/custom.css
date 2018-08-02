@@ -133,3 +133,120 @@
     line-height: 50px;
     background-color: rgb(255, 255, 255);
 }
+input[type=text], input[type=password], input[type=email] {
+    width: 100%;
+    height: 50px;
+    padding: 12px 20px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.button-login {
+    background-color: #944743;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+.button-login:hover {
+    background-color: #944743;
+}
+.button-login-facebook {
+    background-color: white;
+    font-size: 16px;
+    padding: 14px 20px;
+    margin: 8px 0;
+    cursor: pointer;
+    width: 100%;
+    color: #000;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #3b5998;
+}
+.button-login-facebook:hover {
+    background-color: #3b5998;
+    font-size: 16px;
+    padding: 14px 20px;
+    margin: 8px 0;
+    cursor: pointer;
+    width: 100%;
+    color: white;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #3b5998;
+}
+.button-login-google {
+    background-color: white;
+    font-size: 16px;
+    padding: 14px 20px;
+    margin: 8px 0;
+    cursor: pointer;
+    width: 100%;
+    color: #000;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(72, 72, 72);
+}
+.button-login-google:hover {
+    background-color: rgb(72, 72, 72);
+    font-size: 16px;
+    padding: 14px 20px;
+    margin: 8px 0;
+    cursor: pointer;
+    width: 100%;
+    color: white;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(72, 72, 72);
+}
+input[type=checkbox] {
+    height: 18px;
+    width: 18px;
+    display: inline-block;
+    text-align: center;
+    background: rgb(255, 255, 255);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(219, 219, 219);
+    border-image: initial;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+input[type=checkbox]:checked {
+    color: rgb(255, 255, 255);
+    background: rgb(0, 132, 137);
+}
+.checkbox-custom:checked {
+    color: rgb(255, 255, 255) !important;
+    background: rgb(0, 132, 137) !important;
+}
+.link-custom {
+    color: rgb(0, 132, 137);
+}
+.link-custom:hover {
+    color: rgb(0, 132, 137);
+}
+.modal-content-custom {
+    width: 750px;
+    margin-top: 25%;
+}
+.modal-body-custom {
+    padding-bottom: 30px;
+}
+.modal-title {
+    font-size: 200%;
+    color: rgb(72, 72, 72);
+}
+.verify-register {
+    color: rgb(72, 72, 72);
+    font-weight: normal;
+    letter-spacing: normal;
+    font-size: 15px;
+    width: 100%;
+    height: 50px;
+    margin: 10px 0;
+}

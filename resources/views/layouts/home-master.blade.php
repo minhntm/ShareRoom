@@ -7,6 +7,8 @@
 <body>
 @include('shared.navbar')
 @include('shared.banner')
+@include('auth.login-modal')
+@include('auth.register-modal')
 @yield('content')
 <script src="{{ url('/bower_components/jquery/dist/jquery.js') }}"></script>
 <script src="{{ url('/bower_components/bootstrap/dist/js/bootstrap.js') }}"></script>
