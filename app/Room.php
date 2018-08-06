@@ -13,7 +13,7 @@ class Room extends Model
         return $this->belongsTo('App\RoomType', 'room_type');
     }
 
-    public function user()
+    public function owner()
     {
         return $this->belongsTo('App\User', 'owner_id');
     }

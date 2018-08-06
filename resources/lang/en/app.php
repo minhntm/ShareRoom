@@ -21,5 +21,32 @@ return [
     'acount' => 'Acount',
     'test1' => 'Main Description',
     'test2' => 'Roll on the floor purring your whiskers off intrigued by the shower burrow under covers, and play time, rub face on everything, intently sniff hand, or pelt around the house and up and down stairs chasing phantoms. Attack feet. Damn that dog shake treat bag under the bed drink water out of the faucet for lick butt love to play with owner\'s hair tie. Swat at dog give attitude.',
+    'room-not-found' => 'Room not found!',
+    'yes' => 'Yes',
+    'no' => 'No',
+    'save' => 'Save',
+    'upload-photo' => 'Upload Photos',
 
+    // Room attribute
+    'room-name' => 'Room name',
+    'address' => 'Address',
+    'price' => 'Nightly Price',
+    'summary' => 'Summary',
+    'bedroom' => 'Bedroom',
+    'bathroom' => 'Bathroom',
+    'tv' => 'Television',
+    'kitchen' => 'Kitchen',
+    'air' => 'Air',
+    'heating' => 'Heating',
+    'internet' => 'Interner',
+    'active' => 'Active',
+    'verified' => 'Verified',
+    'room-type' => 'Room type',
+    'owner' => 'Owner',
+    'city' => 'City',
+
+    // Room controller status
+    'room-create-success' => 'Your room has been created!',
+    'room-update-success' => 'Your room has been updated!',
+    'room-destroy-success' => 'Your room has been deleted!',
 ];

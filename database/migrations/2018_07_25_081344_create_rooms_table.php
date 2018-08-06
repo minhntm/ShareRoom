@@ -21,13 +21,13 @@ class CreateRoomsTable extends Migration
             $table->text('summary');
             $table->smallInteger('bed_room');
             $table->smallInteger('bath_room');
-            $table->tinyInteger('is_tv');
-            $table->tinyInteger('is_kitchen');
-            $table->tinyInteger('is_air');
-            $table->tinyInteger('is_heating');
-            $table->tinyInteger('is_internet');
-            $table->tinyInteger('active');
-            $table->tinyInteger('verified');
+            $table->tinyInteger('is_tv')->default(0);
+            $table->tinyInteger('is_kitchen')->default(0);
+            $table->tinyInteger('is_air')->default(0);
+            $table->tinyInteger('is_heating')->default(0);
+            $table->tinyInteger('is_internet')->default(0);
+            $table->tinyInteger('active')->default(0);
+            $table->tinyInteger('verified')->default(0);
 
             // references
             $table->integer('room_type')->unsigned();
