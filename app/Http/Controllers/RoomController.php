@@ -8,9 +8,20 @@ use App\Room;
 use App\RoomType;
 use App\City;
 use App\Http\Requests\RoomFormRequest;
+use App\Repositories\CityRepository;
+use App\Repositories\RoomTypeRepository;
 
 class RoomController extends Controller
 {
+    protected $cityRepo;
+    protected $roomTypeRepo;
+
+    public function __construct(CityRepository $cityRepo, RoomTypeRepository $roomTypeRepo)
+    {
+        $this->cityRepo = $cityRepo;
+        $this->roomTypeRepo = $roomTypeRepo;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,6 +30,7 @@ class RoomController extends Controller
     public function index()
     {
         $rooms = Auth::user()->rooms()->get();
+
         return view('rooms.index', compact('rooms'));
     }
 
@@ -29,35 +41,28 @@ class RoomController extends Controller
      */
     public function create()
     {
-        $roomTypeObjects = RoomType::get(['id', 'type'])->toArray();
-        $roomTypes = array();
-        foreach ($roomTypeObjects as $roomTypeObject) {
-            $roomTypes[$roomTypeObject['id']] = $roomTypeObject['type'];
-        }
+        $roomTypes = $this->roomTypeRepo->getAttrWithId('type');
+        $cities = $this->cityRepo->getAttrWithId('name');
+        $numberSelection = $this->getSelection();
 
-        $cityObjects = City::get(['id', 'name'])->toArray();
-        $cities = array();
-        foreach ($cityObjects as $cityObject) {
-            $cities[$cityObject['id']] = $cityObject['name'];
-        }
-
-        return view('rooms.create', compact('roomTypes', 'cities'));
+        return view('rooms.create', compact('roomTypes', 'cities', 'numberSelection'));
     }
 
     public function store(RoomFormRequest $request)
     {
-        $owner_id = Auth::user()->id;
+        $ownerId = Auth::user()->id;
         $data = $request->all();
         // delete this line when upload image
         unset($data['images']);
-        $data['owner_id'] = $owner_id;
+        $data['owner_id'] = $ownerId;
         $room = Room::create($data);
+
         return redirect()->route('rooms.show', $room->id)->with('status', trans('app.room-create-success'));
     }
 
     public function show($id)
     {
-        $room = Room::whereId($id)->first();
+        $room = Room::findOrFail($id);
         if (isset($room)) {
             return view('rooms.show', compact('room'));
         } else {
@@ -73,22 +78,14 @@ class RoomController extends Controller
      */
     public function edit($id)
     {
-        $roomTypeObjects = RoomType::get(['id', 'type'])->toArray();
-        $roomTypes = array();
-        foreach ($roomTypeObjects as $roomTypeObject) {
-            $roomTypes[$roomTypeObject['id']] = $roomTypeObject['type'];
-        }
+        $roomTypes = $this->roomTypeRepo->getAttrWithId('type');
+        $cities = $this->cityRepo->getAttrWithId('name');
+        $numberSelection = $this->getSelection();
 
-        $cityObjects = City::get(['id', 'name'])->toArray();
-        $cities = array();
-        foreach ($cityObjects as $cityObject) {
-            $cities[$cityObject['id']] = $cityObject['name'];
-        }
-
-        $room = Room::whereId($id)->first();
+        $room = Room::findOrFail($id);
 
         if (isset($room)) {
-            return view('rooms.edit', compact('room', 'roomTypes', 'cities'));
+            return view('rooms.edit', compact('room', 'roomTypes', 'cities', 'numberSelection'));
         } else {
             return view('shared.error404');
         }
@@ -107,7 +104,7 @@ class RoomController extends Controller
         // delete this line when upload image
         unset($data['images']);
         // dd($data);
-        $room = Room::whereId($id)->first();
+        $room = Room::findOrFail($id);
         $room->update($data);
 
         return redirect()->route('rooms.edit', $id)->with('status', trans('app.room-update-success'));
@@ -121,9 +118,20 @@ class RoomController extends Controller
      */
     public function destroy($id)
     {
-        $room = Room::whereId($id)->first();
+        $room = Room::findOrFail($id);
         $room->delete();
 
         return redirect()->route('rooms.index')->with('status', trans('Your room has been deleted!'));
+    }
+
+    protected function getSelection()
+    {
+        $max = 6;
+        $selections = [];
+        for ($i = 0; $i < $max; $i++) {
+            $selections[$i] = $i;
+        }
+
+        return $selections;
     }
 }

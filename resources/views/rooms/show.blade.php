@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'show room')
+@section('title', $room->name)
 @section('content')
     <img src="{{ url('images/demo.jpg') }}" alt="Demo">
 
@@ -15,19 +15,19 @@
     <br>
     <h3>{{ trans('app.bathroom') }}: {{ $room->bath_room}}</h3>
     <br>
-    <h3>{{ trans('app.tv') }}: {{ $room->is_tv === 1 ? trans('app.yes') : trans('app.no') }}</h3>
+    <h3>{{ trans('app.tv') }}: {{ config('custom.' . $room->is_tv) }}</h3>
     <br>
-    <h3>{{ trans('app.kitchen') }}: {{ $room->is_kitchen === 1 ? trans('app.yes') : trans('app.no') }}</h3>
+    <h3>{{ trans('app.kitchen') }}: {{ config('custom.' . $room->is_kitchen )}}</h3>
     <br>
-    <h3>{{ trans('app.air') }}: {{ $room->is_air === 1 ? trans('app.yes') : trans('app.no') }}</h3>
+    <h3>{{ trans('app.air') }}: {{ config('custom.' . $room->is_air )}}</h3>
     <br>
-    <h3>{{ trans('app.heating') }}: {{ $room->is_heating === 1 ? trans('app.yes') : trans('app.no') }}</h3>
+    <h3>{{ trans('app.heating') }}: {{ config('custom.' . $room->is_heating)}}</h3>
     <br>
-    <h3>{{ trans('app.internet') }}: {{ $room->is_internet === 1 ? trans('app.yes') : trans('app.no') }}</h3>
+    <h3>{{ trans('app.internet') }}: {{ config('custom.' . $room->is_internet )}}</h3>
     <br>
-    <h3>{{ trans('app.active') }}: {{ $room->active === 1 ? trans('app.yes') : trans('app.no') }}</h3>
+    <h3>{{ trans('app.active') }}: {{ config('custom.' . $room->active)}}</h3>
     <br>
-    <h3>{{ trans('app.verified') }}: {{ $room->verified === 1 ? trans('app.yes') : trans('app.no') }}</h3>
+    <h3>{{ trans('app.verified') }}: {{ config('custom.' . $room->verified )}}</h3>
     <br>
     <h3>{{ trans('app.room-type') }}: {{ $room->roomType()->get()[0]->type }}</h3>
     <br>

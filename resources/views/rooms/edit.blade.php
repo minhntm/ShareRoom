@@ -19,13 +19,13 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             {!! Form::label('bed_room', trans('app.bedroom'), ['class' => 'control-label']) !!}
-                            {!! Form::select('bed_room', ['1' => 1, '2' => 2, '3' => 3, '4' => 4, '5' => 5], $room->bed_room, ['placeholder' => 'Select...', 'class' => 'form-control']) !!}
+                            {!! Form::select('bed_room', $numberSelection, $room->bed_room, ['placeholder' => 'Select...', 'class' => 'form-control']) !!}
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             {!! Form::label('bath_room', trans('app.bathroom'), ['class' => 'control-label']) !!}
-                            {!! Form::select('bath_room', ['1' => 1, '2' => 2, '3' => 3, '4' => 4, '5' => 5], $room->bath_room, ['placeholder' => 'Select...', 'class' => 'form-control']) !!}
+                            {!! Form::select('bath_room', $numberSelection, $room->bath_room, ['placeholder' => 'Select...', 'class' => 'form-control']) !!}
                         </div>
                     </div>
                 </div>
