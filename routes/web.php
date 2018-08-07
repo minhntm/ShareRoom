@@ -14,7 +14,6 @@
 Auth::routes();
 
 Route::get('/', 'PageController@home')->name('home');
-
 Route::get('/rooms/{id}', 'RoomController@show')->where('id', '[0-9]+')->name('rooms.show');
 
 Route::group(['middleware' => ['auth']], function () {
@@ -25,3 +24,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/rooms/{id}', 'RoomController@update')->name('rooms.update');
     Route::delete('/rooms/{id}', 'RoomController@destroy')->name('rooms.destroy');
 });
+
+Route::get('/home', 'PageController@home')->name('home');
+Route::get('/upload', 'ImagesController@create');
+Route::post('/upload', 'ImagesController@store')->name('upload');
+Route::post('/delete', 'ImagesController@destroy');
+Route::get('/images-show', 'ImagesController@index');

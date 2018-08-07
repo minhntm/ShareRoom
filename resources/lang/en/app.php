@@ -17,6 +17,7 @@ return [
     'app-name' => 'Share Room',
     'edit-profile' => 'Edit your profile',
     'acount-setting' => 'Acount setting',
+    'upload-image' => 'Upload Image',
     'about' => 'About',
     'save' => 'Saved',
     'message' => 'Messages',
@@ -42,6 +43,15 @@ return [
     'room-summary-placeholder' => 'Tell about your house',
     'room-address-placeholder' => 'Your address',
     'room-price-placeholder' => '100$',
+    'upload1' => 'Upload your Images',
+    'upload2' => 'Drop files here or Click to Upload',
+    'image' => 'Image',
+    'filename' => 'Filename',
+    'resized-filename' => 'Resized Filename',
+    'save-image-success' => 'Image saved successfully',
+    'file-not-exist' => 'Sorry file does not exist',
+    'delete-image-success' => 'File successfully delete',
+    'no-auth' => 'No Authentication',
 
 
     // Room attribute
