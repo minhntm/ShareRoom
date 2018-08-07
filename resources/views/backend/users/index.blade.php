@@ -36,7 +36,7 @@
                                         <tr>
                                             <td>{!! $user->id !!}</td>
                                             <td>
-                                                <a href="{!! route('admin.user.edit', $user->id) !!}">
+                                                <a href="{!! route('admin.users.edit', $user->id) !!}">
                                                     {!! $user->name !!}
                                                 </a>
                                             </td>
@@ -45,12 +45,12 @@
                                             <td>
                                                 <div class="row">
                                                     <div class="col-md-2 btn-action">
-                                                        {{ Form::open(['method' => 'GET', 'url' => route('admin.user.edit', $user->id)]) }}
+                                                        {{ Form::open(['method' => 'GET', 'url' => route('admin.users.edit', $user->id)]) }}
                                                         {{ Form::submit('Edit', ['class' => 'btn btn-raised btn-success']) }}
                                                         {{ Form::close() }}
                                                     </div>
                                                     <div class="col-md-2 btn-action">
-                                                        {{ Form::open(['method' => 'DELETE', 'url' => route('admin.user.delete', $user->id)]) }}
+                                                        {{ Form::open(['method' => 'DELETE', 'url' => route('admin.users.destroy', $user->id)]) }}
                                                         {{ Form::submit('Delete', ['class' => 'btn btn-raised btn-danger']) }}
                                                         {{ Form::close() }}
                                                     </div>

@@ -163,6 +163,7 @@ return [
 
 
         Collective\Html\HtmlServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
 
     ],
 

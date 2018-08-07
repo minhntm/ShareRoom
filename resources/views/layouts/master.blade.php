@@ -8,6 +8,8 @@
 </head>
 <body>
 @include('shared.navbar')
+@include('auth.login-modal')
+@include('auth.register-modal')
 @yield('content')
 @yield('scripts')
 <script src="{{ url('/bower_components/jquery/dist/jquery.js') }}"></script>
