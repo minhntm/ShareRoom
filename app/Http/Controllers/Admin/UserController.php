@@ -90,7 +90,7 @@ class UserController extends Controller
         $user->save();
         $user->syncRoles($request->get('role'));
 
-        return Redirect::route('admin.user.edit', $user->id)->with('status', trans('app.user-update-success'));
+        return Redirect::route('admin.users.edit', $user->id)->with('status', trans('app.user-update-success'));
     }
 
     /**
@@ -104,6 +104,6 @@ class UserController extends Controller
         $users = User::findOrFail($id);
         $users->delete();
 
-        return Redirect::route('admin.user.index', compact('users'))->with('status', trans('app.user-delete-success'));
+        return Redirect::route('admin.users.index', compact('users'))->with('status', trans('app.user-delete-success'));
     }
 }

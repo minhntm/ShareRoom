@@ -42,7 +42,7 @@ class RoleController extends Controller
     {
         Role::create(['name' => $request->get('name')]);
 
-        return Redirect::route('admin.role.index')->with('create-role-success', trans('app.create-role-success'));
+        return Redirect::route('admin.roles.index')->with('create-role-success', trans('app.create-role-success'));
     }
 
     /**
@@ -90,6 +90,6 @@ class RoleController extends Controller
         $roles = Role::findOrFail($id);
         $roles->delete();
 
-        return Redirect::route('admin.role.index', compact('roles'))->with('role-delete-success', trans('app.role-delete-success'));
+        return Redirect::route('admin.roles.index', compact('roles'))->with('role-delete-success', trans('app.role-delete-success'));
     }
 }

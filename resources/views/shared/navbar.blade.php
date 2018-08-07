@@ -22,6 +22,11 @@
                             {{ Auth::user()->name }}
                         </button>
                         <div class="dropdown-menu dropdown-menu-right fix-dropdown-menu">
+                            @role('Manager')
+                            <a class="dropdown-item fix-dropdown-item" href="{{ url('/admin') }}">
+                                {!! trans('app.admin') !!}
+                            </a>
+                            @endrole
                             <a class="dropdown-item fix-dropdown-item" href="#">{!! trans('app.edit-profile') !!}</a>
                             <a class="dropdown-item fix-dropdown-item" href="#">{!! trans('app.acount-setting') !!}</a>
                             <a class="dropdown-item fix-dropdown-item" href="{{route('upload')}}">{!! trans('app.upload-image') !!}</a>

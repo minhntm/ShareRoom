@@ -44,7 +44,7 @@
                                                 <td>
                                                     <div class="row">
                                                         <div class="col-md-2 btn-action">
-                                                            {{ Form::open(['method' => 'DELETE', 'url' => route('admin.role.delete', $role->id)]) }}
+                                                            {{ Form::open(['method' => 'DELETE', 'url' => route('admin.roles.destroy', $role->id)]) }}
                                                             {{ Form::submit('Delete', ['class' => 'btn btn-raised btn-danger']) }}
                                                             {{ Form::close() }}
                                                         </div>
@@ -62,7 +62,7 @@
                 <div class="col-md-5">
                     <div class="card">
                         <div class="card-body">
-                            {{ Form::open(['method' => 'POST', 'url' => route('admin.role.create')]) }}
+                            {{ Form::open(['method' => 'POST', 'url' => route('admin.roles.store')]) }}
                             @foreach($errors->all() as $error)
                                 <p class="alert alert-danger">{{ $error }}</p>
                             @endforeach

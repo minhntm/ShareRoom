@@ -9,6 +9,8 @@
 </head>
 <body>
     @include('shared.navbar')
+    @include('auth.login-modal')
+    @include('auth.register-modal')
     <div class="container content">
         @foreach ($errors->all() as $error)
             <p class="alert alert-danger">{{ $error }}</p>
@@ -26,5 +28,5 @@
     <script src="{{ url('/bower_components/jquery/dist/jquery.js') }}"></script>
     <script src="{{ url('/bower_components/bootstrap/dist/js/bootstrap.js') }}"></script>
     <script src="{{ url('/js/general-navbar.js') }}"></script>
-</head>
+</body>
 </html>
