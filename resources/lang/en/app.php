@@ -17,6 +17,7 @@ return [
     'app-name' => 'Share Room',
     'edit-profile' => 'Edit your profile',
     'acount-setting' => 'Acount setting',
+    'upload-image' => 'Upload Image',
     'about' => 'About',
     'save' => 'Saved',
     'message' => 'Messages',
@@ -32,5 +33,14 @@ return [
     'enter-password-confirm' => 'Enter Password Confirm',
     'test1' => 'Main Description',
     'test2' => 'Roll on the floor purring your whiskers off intrigued by the shower burrow under covers, and play time, rub face on everything, intently sniff hand, or pelt around the house and up and down stairs chasing phantoms. Attack feet. Damn that dog shake treat bag under the bed drink water out of the faucet for lick butt love to play with owner\'s hair tie. Swat at dog give attitude.',
+    'upload1' => 'Upload your Images',
+    'upload2' => 'Drop files here or Click to Upload',
+    'image' => 'Image',
+    'filename' => 'Filename',
+    'resized-filename' => 'Resized Filename',
+    'save-image-success' => 'Image saved successfully',
+    'file-not-exist' => 'Sorry file does not exist',
+    'delete-image-success' => 'File successfully delete',
+    'no-auth' => 'No Authentication',
 
 ];
