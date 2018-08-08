@@ -16,7 +16,7 @@ return [
     'become-host' => 'Become host',
     'home' => 'Home',
     'app-name' => 'Share Room',
-    'edit-profile' => 'Edit your profile',
+    'edit-profile' => 'Edit profile',
     'acount-setting' => 'Acount setting',
     'upload-image' => 'Upload Image',
     'about' => 'About',
@@ -34,7 +34,7 @@ return [
     'enter-password-confirm' => 'Enter Password Confirm',
     'test1' => 'Main Description',
     'test2' => 'Roll on the floor purring your whiskers off intrigued by the shower burrow under covers, and play time, rub face on everything, intently sniff hand, or pelt around the house and up and down stairs chasing phantoms. Attack feet. Damn that dog shake treat bag under the bed drink water out of the faucet for lick butt love to play with owner\'s hair tie. Swat at dog give attitude.',
-    'room-not-found' => 'Room not found!',
+    'not-found' => 'Not found!',
     'yes' => 'Yes',
     'no' => 'No',
     'save' => 'Save',
@@ -57,6 +57,7 @@ return [
     'read-more' => 'Read more...',
     'your-room' => 'Your room',
     'slogan' => 'Share your home, receive happiness!',
+    'become-a-host' => 'Become a host',
 
     // Room attribute
     'room-name' => 'Room name',
@@ -115,4 +116,10 @@ return [
     'create-role-success' => 'Create a role successfully',
     // money
     'dollar' => '$',
+    //user
+    'references' => 'References',
+    'photo' => 'Photos',
+    'room' => 'Rooms',
+    'require' => 'Require',
+    'view-profile' => 'View Profile',
 ];
