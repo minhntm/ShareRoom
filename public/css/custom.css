@@ -130,6 +130,10 @@
     line-height: 50px;
     background-color: rgb(255, 255, 255);
 }
+.content {
+    margin-top: 150px;
+}
+
 input[type=text], input[type=password], input[type=email] {
     width: 100%;
     height: 50px;
