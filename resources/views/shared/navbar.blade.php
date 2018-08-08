@@ -5,6 +5,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item"><a href="{{ route('rooms.create') }}" class="nav-link">{!! trans('app.become-a-host') !!}</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">{!! trans('app.about') !!}</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">{!! trans('app.save') !!}</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">{!! trans('app.message') !!}</a></li>
@@ -27,7 +28,7 @@
                                 {!! trans('app.admin') !!}
                             </a>
                             @endrole
-                            <a class="dropdown-item fix-dropdown-item" href="#">{!! trans('app.edit-profile') !!}</a>
+                            <a class="dropdown-item fix-dropdown-item" href="{{ route('users.edit', Auth::user()->id) }}">{!! trans('app.edit-profile') !!}</a>
                             <a class="dropdown-item fix-dropdown-item" href="#">{!! trans('app.acount-setting') !!}</a>
                             <a class="dropdown-item fix-dropdown-item" href="{{route('upload')}}">{!! trans('app.upload-image') !!}</a>
                             <div class="dropdown-divider"></div>

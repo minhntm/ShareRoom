@@ -251,3 +251,49 @@ input[type=checkbox]:checked {
     height: 50px;
     margin: 10px 0;
 }
+.profile {
+    background-color: white;
+    margin-top: 20px;
+    position: relative;
+    margin: 0px -150px 0px -150px;
+}
+
+.profile-usermenu {
+    margin: 0px -15px 0px -15px;
+}
+.sidebar-card {
+    border: none;
+    width: 22rem;
+}
+.sidebar-header {
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: white;
+}
+.sidebar-footer {
+    margin-top: 20px;
+}
+.btn-show-profile {
+    margin-left: 15px;
+    width: 100%;
+}
+.btn-edit-profile {
+    margin-left: 15px;
+    width: 100%;
+    color: #944743;
+    border-color: #944743;
+}
+.sidebar-item {
+    border: none;
+    height: 50px;
+    padding: 20px;
+    font-size: 20px;
+}
+.profile-edit-form {
+    margin: 0px -15px 0px -20px;
+}
+.profile-edit-form-header {
+    color: black;
+    font-size: 20px;
+}
