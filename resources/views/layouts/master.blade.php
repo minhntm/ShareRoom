@@ -5,6 +5,9 @@
     <link rel="stylesheet" type="text/css" href="{{ url('/css/custom.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('/css/signin-signout.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('/bower_components/components-font-awesome/css/fontawesome-all.min.css') }}">
+    <!-- import template -->
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/blue-light-2.css') }}">
     @yield('styles')
 </head>
 <body>

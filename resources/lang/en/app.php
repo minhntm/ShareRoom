@@ -53,6 +53,10 @@ return [
     'file-not-exist' => 'Sorry file does not exist',
     'delete-image-success' => 'File successfully delete',
     'no-auth' => 'No Authentication',
+    'night' => '/Night',
+    'read-more' => 'Read more...',
+    'your-room' => 'Your room',
+    'slogan' => 'Share your home, receive happiness!',
 
     // Room attribute
     'room-name' => 'Room name',
@@ -109,4 +113,6 @@ return [
     'role-delete-success' => 'Delete role successfully!',
     'error-role-exist' => 'Error: Role is existed!',
     'create-role-success' => 'Create a role successfully',
+    // money
+    'dollar' => '$',
 ];
