@@ -110,6 +110,7 @@ return [
     'role-delete-success' => 'Delete role successfully!',
     'error-role-exist' => 'Error: Role is existed!',
     'create-role-success' => 'Create a role successfully',
+    'role-exist' => 'Error: role existed!',
 
     //user
     'references' => 'References',
