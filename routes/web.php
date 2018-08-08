@@ -23,6 +23,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/rooms/{id}/edit', 'RoomController@edit')->name('rooms.edit');
     Route::put('/rooms/{id}', 'RoomController@update')->name('rooms.update');
     Route::delete('/rooms/{id}', 'RoomController@destroy')->name('rooms.destroy');
+
+    Route::resource('users', 'UserController');
 });
 
 Route::get('/home', 'PageController@home')->name('home');
