@@ -40,9 +40,15 @@ class RoleController extends Controller
      */
     public function store(RoleFormRequest $request)
     {
-        Role::create(['name' => $request->get('name')]);
+        $role = Role::where('name', $request->get('name'))->get();
 
-        return Redirect::route('admin.roles.index')->with('create-role-success', trans('app.create-role-success'));
+        if (!$role->isEmpty()) {
+            return Redirect::route('admin.roles.index')->with('role-exist', trans('app.role-exist'));
+        } else {
+            Role::create(['name' => $request->get('name')]);
+
+            return Redirect::route('admin.roles.index')->with('create-role-success', trans('app.create-role-success'));
+        }
     }
 
     /**

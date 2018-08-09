@@ -66,9 +66,9 @@
                             @foreach($errors->all() as $error)
                                 <p class="alert alert-danger">{{ $error }}</p>
                             @endforeach
-                            @if(session('status'))
-                                <div class="alert alert-success">
-                                    {{ session('status') }}
+                            @if(session('role-exist'))
+                                <div class="alert alert-danger">
+                                    {{ session('role-exist') }}
                                 </div>
                             @elseif(session('create-role-success'))
                                 <div class="alert alert-success">

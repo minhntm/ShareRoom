@@ -116,6 +116,7 @@ return [
     'create-role-success' => 'Create a role successfully',
     // money
     'dollar' => '$',
+    'role-exist' => 'Error: role existed!',
     //user
     'references' => 'References',
     'photo' => 'Photos',

@@ -38,8 +38,8 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::resource('users', 'UserController',["as"=>"admin"]);
 });
 
-Route::get('users/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('users/register', 'Auth\RegisterController@register');
-Route::get('users/logout', 'Auth\LoginController@logout');
-Route::get('users/login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('users/login', 'Auth\LoginController@login');
+// Route::get('users/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+// Route::post('users/register', 'Auth\RegisterController@register');
+// Route::get('users/logout', 'Auth\LoginController@logout');
+// Route::get('users/login', 'Auth\LoginController@showLoginForm')->name('login');
+// Route::post('users/login', 'Auth\LoginController@login');
