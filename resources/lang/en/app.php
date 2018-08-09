@@ -3,11 +3,18 @@
 
 return [
 
+    // auth
     'login' => 'Login',
     'logout' => 'Logout',
     'signin' => 'Sign in',
     'signup' => 'Sign up',
     'register' => 'Register',
+    'register-here' => 'Register here',
+    'login-here' => 'Login here',
+    'already-a-member' => 'Already a member?',
+    'create-an-account' => 'Create an account',
+    'dont-have-account' => 'Don\'t have an account?',
+    'login-title' => 'Sign into your account',
     'admin' => 'Admin',
     'forgot-password' => 'Forgot password?',
     'verify-register' => 'We’ll send you marketing promotions, special offers, inspiration, and policy updates via email.',
@@ -28,7 +35,7 @@ return [
     'login-with-google' => 'Login with google',
     'login-to-continue' => 'Login to continue',
     'remember-me' => 'Remember me',
-    'enter-username' => 'Enter Username',
+    'enter-username' => 'Enter Fullname',
     'enter-email' => 'Enter Email',
     'enter-password' => 'Enter Password',
     'enter-password-confirm' => 'Enter Password Confirm',
