@@ -8,4 +8,8 @@ class Photo extends Model
 {
     protected $guarded = ['id'];
     
+    public function room()
+    {
+        return $this->belongsTo('App\Room');
+    }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title', $room->name)
 @section('content')
-    <img src="{{ url('images/demo.jpg') }}" alt="Demo">
+    <img src="{{ URL::asset(config('image.images_url') . '/' . $photo->resized_name) }}" />
 
     <h1>{{ $room->name }}</h1>
     <br><hr>

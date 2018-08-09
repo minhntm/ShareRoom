@@ -38,6 +38,7 @@ return [
     'yes' => 'Yes',
     'no' => 'No',
     'save' => 'Save',
+    'next' => 'Next',
     'upload-photo' => 'Upload Photos',
     'select' => 'Select...',
     'room-name-placeholder' => 'Be clear and descriptive',
@@ -77,7 +78,11 @@ return [
     'room-create-success' => 'Your room has been created!',
     'room-update-success' => 'Your room has been updated!',
     'room-destroy-success' => 'Your room has been deleted!',
-    // admin
+    'create-room-step1' => 'Step 1: Choose room image',
+    'create-room-step2' => 'Step 2: Fill information',
+    'room-photo-error' => 'Please upload at least 1 image.',
+
+    // Admin
     'role-index-title' => 'Roles Manager',
     'all-role' => 'All Roles',
     'role-empty' => 'There is no role!',
