@@ -132,6 +132,7 @@
 }
 .content {
     margin-top: 150px;
+    background-color: white;
 }
 
 input[type=text], input[type=password], input[type=email] {

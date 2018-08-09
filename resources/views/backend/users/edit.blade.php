@@ -36,7 +36,7 @@
                 <div class="col-lg-8 col-xlg-9 col-md-7">
                     <div class="card">
                         <div class="card-body">
-                            {{ Form::open(['method' => 'PUT', 'route' => ['users.update', $user->id]]) }}
+                            {{ Form::open(['method' => 'PUT', 'route' => ['admin.users.update', $user->id]]) }}
                                 @foreach ($errors->all() as $error)
                                     <p class="alert alert-danger">{{ $error }}</p>
                                 @endforeach

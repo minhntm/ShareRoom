@@ -10,7 +10,7 @@
                             {{ trans('app.edit-profile') }}
                         </div>
                         <a href="{{ route('upload') }}" class="list-group-item list-group-item-action sidebar-item">{{ trans('app.photo') }}</a>
-                        <a href="{{ route('rooms.create') }}" class="list-group-item list-group-item-action sidebar-item">{{ trans('app.room') }}</a>
+                        <a href="{{ route('rooms.index') }}" class="list-group-item list-group-item-action sidebar-item">{{ trans('app.room') }}</a>
                         <a href="#" class="list-group-item list-group-item-action sidebar-item">{{ trans('app.references') }}</a>
                         <div class="sidebar-footer">
                             {{ Form::open(['method' => 'GET', 'route' => ['users.show', $user->id]]) }}
