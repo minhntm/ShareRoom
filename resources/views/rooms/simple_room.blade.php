@@ -1,7 +1,7 @@
 <div class="col-md-4">
     <div class="hotel-box">
         <div class="header clearfix">
-            <img src={{ url('images/img-1.jpg') }} alt="img-1" class="img-responsive">
+            <img src={{ url('images/demo.jpg') }} alt="img-1" class="img-responsive">
         </div>
         <div class="detail clearfix">
             <div class="pr">
