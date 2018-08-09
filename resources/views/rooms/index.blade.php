@@ -11,9 +11,9 @@
                 </div>
                 <div class="carousel our-partners slide" id="ourPartners3">
                     <div class="carousel-inner">
-                            <div class="row">
-                                @each('rooms.simple_room', $rooms, 'room')
-                            </div>
+                        <div class="row">
+                            @each('rooms.simple_room', $rooms, 'room')
+                        </div>
                     </div>
                 </div>
             </div>
