@@ -25,6 +25,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/rooms/{id}', 'RoomController@destroy')->name('rooms.destroy');
     Route::post('/rooms/upload', 'RoomController@uploadImage')->name('upload');
     Route::post('/rooms/delete', 'RoomController@destroyImage');
+
     Route::resource('users', 'UserController');
 });
 
