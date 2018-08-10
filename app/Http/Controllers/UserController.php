@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserEditProfileFormRequest;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
@@ -64,7 +65,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        if (isset($user)) {
+        if (isset($user) && ($user==Auth::user())) {
             return view('users.edit', compact('user'));
         } else {
             return view('shared.error404');
