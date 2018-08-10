@@ -23,17 +23,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/rooms/{id}/edit', 'RoomController@edit')->name('rooms.edit');
     Route::put('/rooms/{id}', 'RoomController@update')->name('rooms.update');
     Route::delete('/rooms/{id}', 'RoomController@destroy')->name('rooms.destroy');
-
-    Route::resource('users', 'UserController');
+    Route::post('/rooms/upload', 'RoomController@uploadImage')->name('upload');
+    Route::post('/rooms/delete', 'RoomController@destroyImage');
 });
 
 Route::get('/home', 'PageController@home')->name('home');
-Route::get('/upload', 'ImagesController@create');
-Route::post('/upload', 'ImagesController@store')->name('upload');
-Route::post('/delete', 'ImagesController@destroy');
-Route::get('/images-show', 'ImagesController@index');
 Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'manager'), function () {
     Route::get('/', 'PageController@home');
-    Route::resource('roles', 'RoleController',["as"=>"admin"]);
-    Route::resource('users', 'UserController',["as"=>"admin"]);
+    Route::resource('roles', 'RoleController', ['as' => 'admin']);
+    Route::resource('users', 'UserController', ['as' => 'admin']);
 });
