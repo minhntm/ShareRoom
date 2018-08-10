@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Room;
+use App\RoomType;
+use App\City;
 use App\Http\Requests\ImageFormRequest;
 use Illuminate\Support\Facades\Response;
 use Intervention\Image\Facades\Image;
@@ -29,6 +33,7 @@ class ImagesController extends Controller
 
     public function store(Request $request)
     {
+        $imagesId = [];
         $photos = $request->file('file');
 
         if (!is_array($photos)) {
@@ -53,11 +58,13 @@ class ImagesController extends Controller
  
             $photo->move($this->photosPath, $saveName);
  
-            Photo::create(['filename' => $saveName, 'resized_name' => $resizeName, 'original_name' => basename($photo->getClientOriginalName())]);
+            $savedPhoto = Photo::create(['filename' => $saveName, 'resized_name' => $resizeName, 'original_name' => basename($photo->getClientOriginalName())]);
+            $imagesId[] = $savedPhoto->id;
         }
 
         return Response::json([
             'message' => trans('app.save-image-success'),
+            'images_id' => $imagesId,
         ], 200);
     }
 
@@ -65,6 +72,7 @@ class ImagesController extends Controller
     {
         $fileName = $request->id;
         $uploadedImage = Photo::where('original_name', basename($fileName))->first();
+        $id = $uploadedImage->id;
  
         if (empty($uploadedImage)) {
             return Response::json(['message' => trans('app.file-not-exist')], 400);
@@ -85,6 +93,9 @@ class ImagesController extends Controller
             $uploadedImage->delete();
         }
  
-        return Response::json(['message' => trans('app.delete-image-success')], 200);
+        return Response::json([
+            'message' => trans('app.delete-image-success'),
+            'image_id' => $id,
+        ], 200);
     }
 }

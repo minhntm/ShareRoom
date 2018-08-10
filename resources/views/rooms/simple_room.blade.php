@@ -16,10 +16,10 @@
             </div>
             <p>{{ $room->roomType()->get()[0]->type }}</p>
             <h3>
-                <a href="route('rooms.show', $room->id)">{{ $room->name }}</a>
+                <a href="{{ route('rooms.show', $room->id) }}">{{ $room->name }}</a>
             </h3>
             <h5 class="location">
-                <a href="route('rooms.show', $room->id)">
+                <a href="{{ route('rooms.show', $room->id) }}">
                     <i class="fa fa-map-marker"></i>{{ $room->address }},
                 </a>
             </h5>

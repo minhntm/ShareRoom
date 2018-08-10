@@ -10,6 +10,10 @@ use App\City;
 use App\Http\Requests\RoomFormRequest;
 use App\Repositories\CityRepository;
 use App\Repositories\RoomTypeRepository;
+use App\Http\Requests\ImageFormRequest;
+use Illuminate\Support\Facades\Response;
+use Intervention\Image\Facades\Image;
+use App\Photo;
 
 class RoomController extends Controller
 {
@@ -18,6 +22,7 @@ class RoomController extends Controller
 
     public function __construct(CityRepository $cityRepo, RoomTypeRepository $roomTypeRepo)
     {
+        $this->photosPath = public_path('/images');
         $this->cityRepo = $cityRepo;
         $this->roomTypeRepo = $roomTypeRepo;
     }
@@ -41,21 +46,22 @@ class RoomController extends Controller
      */
     public function create()
     {
-        $roomTypes = $this->roomTypeRepo->getAttrWithId('type');
-        $cities = $this->cityRepo->getAttrWithId('name');
-        $numberSelection = $this->getSelection();
-
-        return view('rooms.create', compact('roomTypes', 'cities', 'numberSelection'));
+        return view('image.upload');
     }
 
     public function store(RoomFormRequest $request)
     {
         $ownerId = Auth::user()->id;
         $data = $request->all();
-        // delete this line when upload image
-        unset($data['images']);
+        $imagesId = json_decode(json_decode($data['images_id'], true));
+        unset($data['images_id']);
         $data['owner_id'] = $ownerId;
         $room = Room::create($data);
+        foreach ($imagesId as $imageId) {
+            $photo = Photo::findOrFail($imageId);
+            $photo->room()->associate($room);
+            $photo->save();
+        }
 
         return redirect()->route('rooms.show', $room->id)->with('status', trans('app.room-create-success'));
     }
@@ -63,8 +69,9 @@ class RoomController extends Controller
     public function show($id)
     {
         $room = Room::findOrFail($id);
+        $photo = $room->photos()->first();
         if (isset($room)) {
-            return view('rooms.show', compact('room'));
+            return view('rooms.show', compact('room', 'photo'));
         } else {
             return view('shared.error404');
         }
@@ -133,5 +140,84 @@ class RoomController extends Controller
         }
 
         return $selections;
+    }
+
+    public function uploadImage(Request $request)
+    {
+        $next = $request->input('next') == '1' ? true : false;
+        
+        if ($next) {
+            $id = json_encode($request->input('images_id'));
+            $roomTypes = $this->roomTypeRepo->getAttrWithId('type');
+            $cities = $this->cityRepo->getAttrWithId('name');
+            $numberSelection = $this->getSelection();
+
+            return view('rooms.create', compact('roomTypes', 'cities', 'numberSelection', 'id'));
+        }
+
+        $imagesId = [];
+        $photos = $request->file('file');
+
+        if (!is_array($photos)) {
+            $photos = [$photos];
+        }
+ 
+        if (!is_dir($this->photosPath)) {
+            mkdir($this->photosPath, 0777);
+        }
+ 
+        for ($i = 0; $i < count($photos); $i++) {
+            $photo = $photos[$i];
+            $name = sha1(date('YmdHis') . str_random(30));
+            $saveName = $name . '.' . $photo->getClientOriginalExtension();
+            $resizeName = $name . str_random(2) . '.' . $photo->getClientOriginalExtension();
+ 
+            Image::make($photo)
+                ->resize(250, null, function ($constraints) {
+                    $constraints->aspectRatio();
+                })
+                ->save($this->photosPath . '/' . $resizeName);
+ 
+            $photo->move($this->photosPath, $saveName);
+ 
+            $savedPhoto = Photo::create(['filename' => $saveName, 'resized_name' => $resizeName, 'original_name' => basename($photo->getClientOriginalName())]);
+            $imagesId[] = $savedPhoto->id;
+        }
+
+        return Response::json([
+            'message' => trans('app.save-image-success'),
+            'images_id' => $imagesId,
+        ], 200);
+    }
+
+    public function destroyImage(Request $request)
+    {
+        $fileName = $request->id;
+        $uploadedImage = Photo::where('original_name', basename($fileName))->first();
+        $id = $uploadedImage->id;
+ 
+        if (empty($uploadedImage)) {
+            return Response::json(['message' => trans('app.file-not-exist')], 400);
+        }
+ 
+        $filePath = $this->photosPath . '/' . $uploadedImage->filename;
+        $resizedFile = $this->photosPath . '/' . $uploadedImage->resized_name;
+ 
+        if (file_exists($filePath)) {
+            unlink($filePath);
+        }
+ 
+        if (file_exists($resizedFile)) {
+            unlink($resizedFile);
+        }
+ 
+        if (!empty($uploadedImage)) {
+            $uploadedImage->delete();
+        }
+ 
+        return Response::json([
+            'message' => trans('app.delete-image-success'),
+            'image_id' => $id,
+        ], 200);
     }
 }
