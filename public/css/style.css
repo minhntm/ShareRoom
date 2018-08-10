@@ -2743,7 +2743,7 @@ footer ul {
 }
 
 .contact-bg{
-    background: rgba(0, 0, 0, 0.04) url(../img/404.jpg) top left repeat;
+    background: rgba(0, 0, 0, 0.04) url(/img/404.jpg) top left repeat;
     background-size: cover;
     top: 0;
     width: 100%;
@@ -2762,7 +2762,7 @@ footer ul {
 }
 
 .form-content-box .details {
-    padding: 50px 30px;
+    padding: 30px 30px;
     border-radius: 5px 5px 0 0;
     background: #fff;
 }
@@ -5974,4 +5974,16 @@ span.round-tab:hover i {
         margin-bottom: 30px;
         font-size: 16px;
     }
+}
+
+.invalid-feedback-custom {
+    text-align: left;
+}
+
+.link-not-important-custom {
+    margin-top: 10px;
+}
+
+.btn-register{
+    margin-top: 30px;
 }

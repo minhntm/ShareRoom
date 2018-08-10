@@ -16,9 +16,13 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
+                        <div class="card-header text-center">
+                            <h1>{!! trans('app.create-room-step1') !!}</h1>
+                        </div>
                         <!-- <div class="card-header">{{ __('Upload Image') }}</div> -->
                         <div class="card-body">
-                        <h3 class="page-heading">{!! trans('app.upload1') !!}<span id="counter"></span></h3>
+                        <i class="fas fa-cloud-upload-alt"></i> {{ trans('app.upload-photo') }}
+                        <br>
                             {!! Form::open(['method' => 'POST', 'url' => route('upload'), 'files' => true, 'class' => 'dropzone', 'id' => 'my-dropzone']) !!}
 
                             <div class="dz-message">
@@ -32,8 +36,21 @@
                             <div class="fallback">
                                 {!! Form::file('file', ['multiple' => true]) !!}
                             </div>
-               
+
+                            {!! Form::hidden('next', 0) !!}
+                                         
                             {!! Form::close() !!}
+
+                            <br>
+                            <p class="alert alert-danger" id="notice">{!! trans('app.room-photo-error') !!}</p>
+
+                            <div class="actions text-center">
+                                {!! Form::open(['method' => 'POST', 'url' => route('upload')]) !!}
+                                {!! Form::submit(trans('app.next'), ['class' => 'btn btn-primary', 'id' => 'next']) !!}
+                                {!! Form::hidden('next', 1) !!}
+                                {!! Form::hidden('images_id', '', ['id' => 'images_id']) !!}
+                                {!! Form::close() !!}
+                            </div>
                         </div>
                     </div>
                 </div>

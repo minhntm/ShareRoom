@@ -9,8 +9,6 @@
         </div>
         <div class="row">
             @include('rooms.complex_room', ['room' => $room])
-            @include('rooms.complex_room', ['room' => $room])
-            @include('rooms.complex_room', ['room' => $room])
         </div>
     </div>
 </div>

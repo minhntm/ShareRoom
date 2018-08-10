@@ -3,7 +3,7 @@
 @section('content')
 <div class="card">
     <div class="card-header text-center">
-        <h1>Create your beautiful place</h1>
+        <h1>{!! trans('app.create-room-step2') !!}</h1>
     </div>
     <div class="card-body">
         <div class="container">
@@ -105,22 +105,13 @@
 
                 <br>
                 <div class="row">
-                    <div class="form-group">
-                        <span class="btn btn-default btn-file">
-                            <i class="fas fa-cloud-upload-alt"></i> {{ trans('app.upload-photo') }}
-                            {!! Form::file('images[]', ['class' => 'form-control', 'multiple' => true]) !!}
-                        </span>
-                    </div>
-                </div>
-
-                <br>
-                <div class="row">
                     <div class="col form-group">
                         {!! Form::hidden('active', 0) !!}
                         {!! Form::checkbox('active', 1) !!} {{ trans('app.active') }}
                     </div>
                 </div>
 
+                {!! Form::hidden('images_id', $id) !!}
                 {!! Form::hidden('verified', 0) !!}
 
                 <br>
