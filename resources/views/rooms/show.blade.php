@@ -2,7 +2,14 @@
 @section('title', $room->name)
 @section('content')
     <img src="{{ URL::asset(config('image.images_url') . '/' . $photo->resized_name) }}" />
+    <br><br><br>
+    <div class="row">
+        <div class="col-md-4">
+            @include('reservations.form', ['room' => $room])
+        </div>
+    </div>
 
+    <br><br><br>
     <h1>{{ $room->name }}</h1>
     <br><hr>
     <h3>{{ trans('app.address') }}: {{ $room->address }}</h3>
@@ -34,4 +41,14 @@
     <h3>{{ trans('app.owner') }}: {{ $room->owner()->get()[0]->name }}</h3>
     <br>
     <h3>{{ trans('app.city') }}: {{ $room->city()->get()[0]->name }}</h3>
+
+@endsection
+
+@section('scripts')
+    <script src="{{ url('/bower_components/jquery-ui/ui/widgets/datepicker.js') }}"></script>
+@endsection
+
+@section('styles')
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url('/bower_components/jquery-ui/themes/base/datepicker.css') }}"> -->
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/jquery-ui-1.10.0.custom.css') }}">
 @endsection

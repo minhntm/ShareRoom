@@ -116,7 +116,7 @@
 
                 <br>
                 <div class="actions text-center">
-                    {!! Form::submit(trans('app.save'), ['class' => 'btn btn-primary']) !!}
+                    {!! Form::submit(trans('app.save'), ['class' => 'btn btn-primary btn-theme']) !!}
                 </div>
 
             {!! Form::close() !!}
