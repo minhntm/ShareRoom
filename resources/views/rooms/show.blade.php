@@ -42,13 +42,24 @@
     <br>
     <h3>{{ trans('app.city') }}: {{ $room->city()->get()[0]->name }}</h3>
 
+    <div class="comments-section sidebar-widget">
+        <div class="main-title-2">
+            <h1><span>Rooms </span> Reviews</h1>
+        </div>
+
+        @each('reviews.show', $reviews, 'review')
+    </div>
+    @include('reviews.form', ['room' => $room])
+
 @endsection
 
 @section('scripts')
     <script src="{{ url('/bower_components/jquery-ui/ui/widgets/datepicker.js') }}"></script>
+    <script src="{{ url('/bower_components/jquery-raty/lib/jquery.raty.js') }}"></script>
 @endsection
 
 @section('styles')
     <!-- <link rel="stylesheet" type="text/css" href="{{ url('/bower_components/jquery-ui/themes/base/datepicker.css') }}"> -->
     <link rel="stylesheet" type="text/css" href="{{ url('/css/jquery-ui-1.10.0.custom.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('/bower_components/jquery-raty/lib/jquery.raty.css') }}">
 @endsection

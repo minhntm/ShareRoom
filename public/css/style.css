@@ -3248,19 +3248,11 @@ blockquote {
     color: #5a5959;
 }
 
-.comment-meta-reply {
-    color: #fff;
+.comment-meta-delete {
     float: right;
-    font-size: 12px;
+    font-size: 20px;
     font-weight: 600;
     margin: 0 0 0 15px;
-}
-
-.comment-meta-reply a {
-    border-radius: 2px;
-    color: #fff;
-    padding: 4px 8px;
-    text-decoration: none;
 }
 
 .comment-meta-date {

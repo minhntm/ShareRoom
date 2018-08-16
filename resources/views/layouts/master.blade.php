@@ -30,8 +30,8 @@
             </div>
         @endif
 
-        @yield('content')
         @yield('scripts')
+        @yield('content')
     </div>
 </body>
 </html>
