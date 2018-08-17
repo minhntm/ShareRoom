@@ -5723,7 +5723,8 @@ button.bg-purple:focus {
 .clearfix::after {
     display: block;
     clear: both;
-    content: ""; }
+    content: "";
+}
 
 .d-none {
     display: none !important; }

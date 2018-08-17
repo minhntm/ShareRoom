@@ -68,7 +68,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 p{
     color: #5a5959;
     line-height: 26px;
-    font-size: 14px;
+    font-size: 17px;
 }
 
 ul{
@@ -1592,7 +1592,7 @@ span.flatpickr-weekday {
 }
 
 .rooms-detail-slider h3 {
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 600;
     margin: 0 0 20px;
     color: #212121;
@@ -2965,6 +2965,12 @@ a:hover {
     padding: 20px;
     margin-bottom: 30px;
 }
+.fix-sidebar-widget {
+    border: 1px solid rgb(219, 219, 219);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 50px;
+    margin-top: -20px;
+}
 
 .sidebar .contact-form textarea {
     min-height: 130px;
@@ -2975,7 +2981,8 @@ a:hover {
 }
 
 .bg-grey{
-    background: #efefef;
+    background: white;
+    border: 1px solid rgb(219, 219, 219);
 }
 
 .form-search {
@@ -3465,9 +3472,9 @@ blockquote {
 
 /** SUB BANNER AREA START **/
 .sub-banner {
-    background: rgba(0, 0, 0, 0.04) url(../img/banner/sub-banner.jpg) top left repeat;
+    background: rgba(0, 0, 0, 0.04) url(../img/banner/banner-slider-2.jpg) top left repeat;
     background-size: cover;
-    height: 270px;
+    height: 600px;
     background-position: center center;
     background-repeat: no-repeat;
     position: relative;
@@ -5163,10 +5170,9 @@ span.round-tab:hover i {
     }
 
     .search-area-box-2 {
-        background: #e6e6e6;
+        background: white;
         padding: 30px 30px 15px;
     }
-
     .search-your-rooms {
         text-align: center;
     }

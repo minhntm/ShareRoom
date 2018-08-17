@@ -134,7 +134,22 @@
     margin-top: 150px;
     background-color: white;
 }
-
+.show-room-content {
+    margin-top: 100px;
+    background-color: white;
+}
+.custom-line {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #dee2e6;
+}
+.custom-row-show-room {
+    margin-left: -130px;
+    margin-right: -130px;
+}
+.fix-form-checkin-checkout {
+    border: 1px solid #EBEBEB;
+}
 input[type=text], input[type=password], input[type=email] {
     width: 100%;
     height: 50px;
@@ -312,4 +327,27 @@ input[type=checkbox]:checked {
   font-size: 20px;
   padding: 10px;
   margin-bottom: 10px;
+}
+.sub-banner-button-area-1 {
+    position: absolute;
+    left: 24px;
+    bottom: 24px;
+    width: 100px;
+    height: 50px;
+}
+.sub-banner-button-area-2 {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 200px;
+    height: 50px;
+}
+.sub-banner-button-area-2-child {
+    width: 90px;
+    height: 50px;
+}
+.sub-banner-button-1 {
+    color: #484848;
+    font-size: 17px;
+    font-weight: 600;
 }

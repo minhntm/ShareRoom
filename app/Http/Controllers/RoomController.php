@@ -224,4 +224,9 @@ class RoomController extends Controller
             'image_id' => $id,
         ], 200);
     }
+
+    public function testShowRoom()
+    {
+        return view('rooms.test-show-room');
+    }
 }

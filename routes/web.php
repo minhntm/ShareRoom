@@ -34,6 +34,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('rooms.reviews', 'ReviewController')->only([
         'store', 'destroy'
     ]);
+
+    Route::get('/rooms/test-show-room', 'RoomController@testShowRoom');
 });
 
 Route::get('/home', 'PageController@home')->name('home');
