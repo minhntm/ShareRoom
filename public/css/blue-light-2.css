@@ -13,6 +13,11 @@ a:hover {
     border: 2px solid #e15f02;
 }
 
+.btn-theme:disabled {
+    background: #fd7717;
+    border: 2px solid #fd7717;
+}
+
 .navbar-search-input::-webkit-input-placeholder {
     color: #fd7717;
 }

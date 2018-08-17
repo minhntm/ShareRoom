@@ -27,6 +27,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/rooms/delete', 'RoomController@destroyImage');
 
     Route::resource('users', 'UserController');
+
+    Route::resource('rooms.reservations', 'ReservationController')->only([
+        'store', 'destroy', 'index'
+    ]);
+    Route::resource('rooms.reviews', 'ReviewController')->only([
+        'store', 'destroy'
+    ]);
 });
 
 Route::get('/home', 'PageController@home')->name('home');
@@ -35,3 +42,6 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::resource('roles', 'RoleController', ['as' => 'admin']);
     Route::resource('users', 'UserController', ['as' => 'admin']);
 });
+
+Route::get('/preload', 'ReservationController@preload')->name('preload');
+Route::get('/preview', 'ReservationController@preview')->name('preview');

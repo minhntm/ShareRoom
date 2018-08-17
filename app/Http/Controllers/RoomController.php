@@ -69,9 +69,13 @@ class RoomController extends Controller
     public function show($id)
     {
         $room = Room::findOrFail($id);
-        $photo = $room->photos()->first();
         if (isset($room)) {
-            return view('rooms.show', compact('room', 'photo'));
+            $photo = $room->photos()->first();
+            $reviews = $room->reviews()->get();
+        }
+
+        if (isset($room)) {
+            return view('rooms.show', compact('room', 'photo', 'reviews'));
         } else {
             return view('shared.error404');
         }

@@ -71,6 +71,7 @@ return [
     'room-name' => 'Room name',
     'address' => 'Address',
     'price' => 'Nightly Price',
+    'per-night' => 'Per Night',
     'summary' => 'Summary',
     'bedroom' => 'Bedroom',
     'bathroom' => 'Bathroom',
@@ -135,4 +136,10 @@ return [
     'room' => 'Rooms',
     'require' => 'Require',
     'view-profile' => 'View Profile',
+    // reservation
+    'booking' => 'Book now',
+    'start-date' => 'Start date',
+    'end-date' => 'End date', 
+    'book-success' => 'Your reservation has been created',
+    'invalid-range' => 'Invalid date range.',
 ];
