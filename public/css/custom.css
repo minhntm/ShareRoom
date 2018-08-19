@@ -24,7 +24,7 @@
     margin-right: 50px;
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:active, .navbar-default .navbar-nav > li > a:focus {
-    color: #944743;
+    color: #bc3a33;
     border: 0px solid white;
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
@@ -50,7 +50,7 @@
     box-shadow: 0 0 4px grey;
 }
 .navbar.solid .navbar-brand {
-    color: #944743;
+    color: #bc3a33;
     transition: color 1s ease 0s;
     margin-right: 50px;
 }
@@ -160,7 +160,7 @@ input[type=text], input[type=password], input[type=email] {
     box-sizing: border-box;
 }
 .button-login {
-    background-color: #944743;
+    background-color: #bc3a33;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -169,7 +169,7 @@ input[type=text], input[type=password], input[type=email] {
     width: 100%;
 }
 .button-login:hover {
-    background-color: #944743;
+    background-color: #bc3a33;
 }
 .button-login-facebook {
     background-color: white;
@@ -297,8 +297,8 @@ input[type=checkbox]:checked {
 .btn-edit-profile {
     margin-left: 15px;
     width: 100%;
-    color: #944743;
-    border-color: #944743;
+    color: #bc3a33;
+    border-color: #bc3a33;
 }
 .sidebar-item {
     border: none;
@@ -350,4 +350,7 @@ input[type=checkbox]:checked {
     color: #484848;
     font-size: 17px;
     font-weight: 600;
+}
+.text-line-through {
+  text-decoration: line-through
 }

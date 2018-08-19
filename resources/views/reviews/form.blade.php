@@ -1,6 +1,6 @@
 {{ Form::open(['method' => 'POST', 'url' => route('rooms.reviews.store', ['room' => $room->id])]) }}
     <div id="user_stars"></div>
-    {{ Form::text('comment', old('comment')) }}
+    {{ Form::text('comment', old('comment'), ['placeholder' => 'Your comment']) }}
     {{ Form::hidden('room_id', $room->id) }}
     {{ Form::submit('Submit', ['class' => 'btn btn-primary btn-theme']) }}
 {{ Form::close() }}

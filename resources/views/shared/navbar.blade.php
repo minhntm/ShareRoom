@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default fixed-top navbar-expand-md">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ route('home') }}">{!! trans('app.app-name') !!}</a>
+            <a class="navbar-brand" href="{{ route('home') }}"><b>{!! trans('app.app-name') !!}</b></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav ml-auto">

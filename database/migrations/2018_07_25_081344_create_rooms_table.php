@@ -19,13 +19,15 @@ class CreateRoomsTable extends Migration
             $table->string('address');
             $table->float('price');
             $table->text('summary');
+            $table->text('rule');
             $table->smallInteger('bed_room');
             $table->smallInteger('bath_room');
             $table->tinyInteger('is_tv');
-            $table->tinyInteger('is_kitchen');
             $table->tinyInteger('is_air');
-            $table->tinyInteger('is_heating');
             $table->tinyInteger('is_internet');
+            $table->tinyInteger('is_phone');
+            $table->tinyInteger('is_kitchen');
+
             $table->tinyInteger('active');
             $table->tinyInteger('verified');
 

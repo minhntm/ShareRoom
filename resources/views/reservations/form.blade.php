@@ -1,10 +1,5 @@
 {{ Form::open(['method' => 'POST', 'url' => route('rooms.reservations.store', ['room' => $room->id])]) }}
-    <div class="row">
-        <div class="col-md-12 price_tag">
-            <span>${{ $room->price }}</span>
-            <span class="pull-right">{{ trans('app.per-night') }}</span>
-        </div>
-    </div>
+    <h1>${{ $room->price }}/Night</h1>
     <div class="row">
         <div class="col-md-6">
             {{ Form::label('Check In') }}
@@ -14,34 +9,31 @@
             {{ Form::label('Check Out') }}
             {{ Form::text('end_date', old('end_date'), ['id' => 'reservation_end_date', 'placeholder' => trans('app.end-date'), 'class' => 'form-control', 'readonly' => 'true', 'disabled' => 'true']) }}
         </div>
-    
     </div>
     {{ Form::hidden('total', null, ['id' => 'reservation_total']) }}
     {{ Form::hidden('room_id', $room->id) }}
     {{ Form::hidden('price', $room->price) }}
     {{ Form::hidden('status', 1) }}
+
+    <span id="message"></span>
+
+    <div id="preview" style="display: none">
+        <table class="reservation-table" >
+            <tbody>
+                <tr>
+                    <td>Day(s)</td>
+                    <td><span id="reservation_days"></span></td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>$<span id="reservation_sum"></span></td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+    </div>
+
     {{ Form::submit(trans('app.booking'), ['id' => 'btn_book', 'class' => 'btn btn-primary btn-theme wide', 'disabled' => 'true']) }}
-
-<h4><span id="message"></span></h4>
-
-<div id="preview" style="display: none">
-    <table class="reservation-table" >
-        <tbody>
-            <tr>
-                <td>Day(s)</td>
-                <td><span id="reservation_days"></span></td>
-            </tr>
-            <tr>
-                <td>Total</td>
-                <td>$<span id="reservation_sum"></span></td>
-            </tr>
-        </tbody>
-    </table>
-    <br>
-</div>
-
-
-
 {{ Form::close() }}
 
 <script>

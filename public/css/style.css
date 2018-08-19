@@ -3863,10 +3863,9 @@ blockquote {
 }
 
 .rooms-features ul li i {
-    margin-right: 15px;
+    margin-right: 10px;
     text-align: center;
     font-size: 15px;
-    font-weight: 400;
 }
 
 .rooms-features ul li span {
@@ -3887,13 +3886,6 @@ blockquote {
     margin-bottom: 20px;
     color: #5a5959;
     font-size: 13px;
-}
-
-.rooms-features ul li i {
-    margin-right: 20px;
-    text-align: center;
-    font-size: 15px;
-    font-weight: 400;
 }
 
 .advantages ul {

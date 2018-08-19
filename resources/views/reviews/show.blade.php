@@ -11,23 +11,25 @@
                     <div class="comment-meta-author">
                         {{ $review->user()->get()[0]->name }}
                     </div>
-                    <div class="comment-meta-delete">
-                        @if (Auth::user()->id === $review->user()->get()[0]->id)
-                            <a onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
-                                <i class="fas fa-trash"></i>
-                            </a>
-                            {{ Form::open(['id' => 'delete-form', 'method' => 'DELETE', 'url' => route('rooms.reviews.destroy', ['room' => $review->room()->get()[0]->id, 'review' => $review->id])]) }}
-                            {{ Form::close() }}
-                        @else
-                            <a onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
-                                <i class="fas fa-trash"></i>
-                            </a>
-                            <!-- {{ Form::open(['id' => 'delete-form', 'method' => 'DELETE', 'url' => route('rooms.reviews.destroy', ['room' => $review->room()->get()[0]->id, 'review' => $review->id])]) }}
-                            {{ Form::close() }} -->
-                        @endif
-                    </div>
+                    @auth
+                        <div class="comment-meta-delete">
+                            @if (Auth::user()->id === $review->user()->get()[0]->id)
+                                <a onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                                {{ Form::open(['id' => 'delete-form', 'method' => 'DELETE', 'url' => route('rooms.reviews.destroy', ['room' => $review->room()->get()[0]->id, 'review' => $review->id])]) }}
+                                {{ Form::close() }}
+                            @else
+                                <a onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                                <!-- {{ Form::open(['id' => 'delete-form', 'method' => 'DELETE', 'url' => route('rooms.reviews.destroy', ['room' => $review->room()->get()[0]->id, 'review' => $review->id])]) }}
+                                {{ Form::close() }} -->
+                            @endif
+                        </div>
+                    @endauth
                     <div class="comment-meta-date">
-                        <span class="hidden-xs">8:42 PM 3/3/2017</span>
+                        <span class="hidden-xs">{{ $review->created_at }}</span>
                     </div>
                 </div>
                 <div class="clearfix"></div>

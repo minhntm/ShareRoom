@@ -4,103 +4,103 @@ a:hover {
 }
 
 .btn-theme {
-    background: #944743;
-    border: 2px solid #944743;
+    background: #bc3a33;
+    border: 2px solid #bc3a33;
 }
 
 .btn-theme:hover {
-    background: #e15f02;
-    border: 2px solid #e15f02;
+    background: #e51b10;
+    border: 2px solid #e51b10;
 }
 
 .btn-theme:disabled {
-    background: #944743;
-    border: 2px solid #944743;
+    background: #bc3a33;
+    border: 2px solid #bc3a33;
 }
 
 .navbar-search-input::-webkit-input-placeholder {
-    color: #944743;
+    color: #bc3a33;
 }
 
 .navbar-search-input:-moz-placeholder {
-    color: #944743;
+    color: #bc3a33;
 }
 
 .dropdown-menu .open > a, .dropdown-menu .open > a:focus, .dropdown-menu .open > a:hover {
-    background-color: #944743;
+    background-color: #bc3a33;
     border-bottom: 1px solid transparent;
     color: #fff;
 }
 
 .navbar-search-input::-moz-placeholder {
-    color: #944743;
+    color: #bc3a33;
 }
 
 .navbar-search-input:-ms-input-placeholder {
-    color: #944743;
+    color: #bc3a33;
 }
 
 .navbar-search-open .navbar-search-icon {
-    background: #944743;
+    background: #bc3a33;
 }
 
 .navbar-search-open .navbar-search-submit {
-    background: #944743;
+    background: #bc3a33;
 }
 
 #page_scroller {
-    background: #944743;
+    background: #bc3a33;
 }
 
 .setting-button{
-    background: #944743;
+    background: #bc3a33;
 }
 
 .option-panel h2{
-    color: #944743;
+    color: #bc3a33;
 }
 
 .list-inline-listing .active{
-    background: #944743;
+    background: #bc3a33;
 }
 
 .list-inline-listing li:hover{
-    background: #944743;
+    background: #bc3a33;
 }
 
 .read-more-btn{
-    color:  #944743;
+    color:  #bc3a33;
 }
 
 
 .search-contents .dropdown-menu>li>a:hover {
     color: #fff;
-    background: #944743;
+    background: #bc3a33;
     border: 0;
 }
 
 .btn-outline:hover{
-    background: #944743;
-    border: 2px solid #944743;
+    background: #bc3a33;
+    border: 2px solid #bc3a33;
     color: #fff;
 }
 
 .our-facilties ul li i{
-    border: solid 2px #944743;
-    color: #944743;;
+    border: solid 2px #bc3a33;
+    color: #bc3a33;;
 }
 
 .pages-404-2 .btn, .pages-404 .btn:hover, .pages-404 .btn:active {
-    background: #944743;
+    background: #bc3a33;
 }
 
 .newsletter form .btn-small {
-    border: solid 1px #944743;
-    background: #944743;
+    border: solid 1px #bc3a33;
+    background: #bc3a33;
 }
 
 .fecilities li i{
-    color: #944743;
+    color: #bc3a33;
 }
 
 .newsletter form .btn-small:hover {
@@ -109,59 +109,59 @@ a:hover {
 }
 
 .rooms-features ul li i {
-    color: #944743;
+    color: #bc3a33;
 }
 
 .border-btn-theme {
-    border: 2px solid #944743;
-    color: #944743;
+    border: 2px solid #bc3a33;
+    color: #bc3a33;
 }
 
 .search-contents h2 span{
-    color: #944743;
+    color: #bc3a33;
 }
 
 .border-btn-theme:hover {
-    background: #944743;
+    background: #bc3a33;
     color: #fff;
 }
 
 .theme-tabs .nav-tabs > li > a {
-    background: #944743;
+    background: #bc3a33;
 }
 
 .theme-tabs .nav-tabs > li.active > a,
 .theme-tabs .nav-tabs > li > a:hover {
-    color: #944743 !important;
+    color: #bc3a33 !important;
 }
 
 .theme-tabs .nav-tabs > li > a::after {
-    background: #944743;
+    background: #bc3a33;
 }
 
 .theme-tabs .tab-nav > li > a::after {
-    background: #944743 none repeat scroll 0% 0%;
+    background: #bc3a33 none repeat scroll 0% 0%;
 }
 
 .nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
-    border-color: #944743;
+    border-color: #bc3a33;
     border-bottom: transparent;
 }
 
 .main-header-4 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:focus,
 .navbar-default .navbar-nav > .active > a:hover {
-    color: #944743 !important;
-    border-bottom: solid 2px #944743 !important;
+    color: #bc3a33 !important;
+    border-bottom: solid 2px #bc3a33 !important;
 }
 
 .main-header .navbar-default .nav > li > a:hover{
-    color: #944743;
-    border-bottom: solid 2px #944743;
+    color: #bc3a33;
+    border-bottom: solid 2px #bc3a33;
 }
 
 .btn-navbar:hover{
-    border: solid 2px #944743 !important;
+    border: solid 2px #bc3a33 !important;
 }
 
 .header-search .btn-default,
@@ -169,316 +169,316 @@ a:hover {
 .header-search .btn-default:hover
 {
 
-    background: #944743;
+    background: #bc3a33;
 }
 
 
 .intro-section {
-    background: #944743;
+    background: #bc3a33;
 }
 
 .panel-box .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
-    background: #944743;
+    background: #bc3a33;
     border-radius: 0;
 }
 
 .panel-box ul li a:hover{
-    background: #944743;
+    background: #bc3a33;
     color: #fff;
     border-radius: 0;
 }
 
 span.round-tab {
-    border: 2px solid #944743;
+    border: 2px solid #bc3a33;
 }
 
 span.round-tab i{
-    color:#944743;
+    color:#bc3a33;
 }
 
 .wizard li.active span.round-tab {
-    background: #944743;
-    border: 2px solid #944743;
+    background: #bc3a33;
+    border: 2px solid #bc3a33;
 }
 
 .wizard li:after {
-    border-bottom-color: #944743;
+    border-bottom-color: #bc3a33;
 }
 
 .wizard li.active:after {
-    border-bottom-color: #944743;
+    border-bottom-color: #bc3a33;
 }
 
 .booking-flow .panel-box .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
-    border: 2px solid #944743;
+    border: 2px solid #bc3a33;
 }
 
 span.round-tab:hover {
-    border: 2px solid #944743;
-    background: #944743;
+    border: 2px solid #bc3a33;
+    background: #bc3a33;
 }
 
 .course-panel-box .nav-tabs>li>a:hover {
     color: #fff;
-    background: #944743;
+    background: #bc3a33;
     border: none;
 }
 
 .heading-rooms  p i{
-    color: #944743;
+    color: #bc3a33;
     margin-right: 5px;
 }
 
 .panel-box span a {
-    color: #944743;
+    color: #bc3a33;
 }
 
 .panel-box .panel-heading .panel-title a i{
-    color: #944743;
+    color: #bc3a33;
 }
 
 .heading-rooms  h3 {
-    color: #944743;
+    color: #bc3a33;
 }
 
 .bootstrap-select.btn-group.show-tick .dropdown-menu li.selected a span.check-mark {
-    color: #944743;
+    color: #bc3a33;
 }
 
 .for-sale {
-    background: #944743;
+    background: #bc3a33;
 }
 
 .advantages ul li span{
-    color: #944743;
+    color: #bc3a33;
 }
 
 .category-content .btn, .category-content .pricing-btn {
-    background: #944743;
+    background: #bc3a33;
 }
 
 .search-area-box-2 h1{
-    color: #944743;
+    color: #bc3a33;
 }
 
 .dropdown-menu>li>a:hover {
     color: #fff;
-    background: #944743;
+    background: #bc3a33;
 }
 
 .btn-outline {
-    border: solid 1px #944743;
-    color: #944743;
+    border: solid 1px #bc3a33;
+    color: #bc3a33;
 }
 
 .btn-outline:hover {
-    border: solid 1px #944743;
-    background: #944743;
+    border: solid 1px #bc3a33;
+    background: #bc3a33;
     color: #fff;
 }
 
 .listing-properties-box .detail header.title a {
-    color: #944743;
+    color: #bc3a33;
 }
 
 .listing-properties-box .detail .title::after {
-    background-color: #944743;
+    background-color: #bc3a33;
 }
 
 .pagination > li > a:hover {
-    background: #944743;
-    border-color: #944743;
+    background: #bc3a33;
+    border-color: #bc3a33;
 }
 
 .pagination > .active > a {
-    background: #944743;
-    border-color: #944743;
+    background: #bc3a33;
+    border-color: #bc3a33;
 }
 
 .pagination > .active > a:hover {
-    background: #944743;
-    border-color: #944743;
+    background: #bc3a33;
+    border-color: #bc3a33;
 }
 
 .staff-box-2 .content h1 a{
-    color: #944743;
+    color: #bc3a33;
 }
 
 .form-content-box .footer span a {
-    color: #944743;
+    color: #bc3a33;
 }
 
 .staff-box-1-big .content h1 a:hover{
-    color: #944743;
+    color: #bc3a33;
 }
 
 .archives ul li a:hover{
-    color: #944743;
+    color: #bc3a33;
 }
 
 .category-posts ul li a:hover {
-    color: #944743;
+    color: #bc3a33;
 }
 
 .tags-box ul li a:hover {
-    border: 1px solid #944743;
-    background: #944743;
+    border: 1px solid #bc3a33;
+    background: #bc3a33;
 }
 
 .latest-tweet a {
-    color: #944743;
+    color: #bc3a33;
 }
 
 .recent-news .media-heading a {
-    color: #944743;
+    color: #bc3a33;
 }
 
 .comment-meta-author a {
-    color: #944743;
+    color: #bc3a33;
 }
 
 .comment-meta-reply a {
-    background-color: #944743;
+    background-color: #bc3a33;
 }
 
 .contact-1 .contact-details .media .media-left i {
-    color: #944743;
-    border: 1px dashed #944743;
+    color: #bc3a33;
+    border: 1px dashed #bc3a33;
 }
 
 .about-text ul li i {
-    color: #944743;
+    color: #bc3a33;
 }
 
 .services-box-2 i{
-    color:  #944743;
+    color:  #bc3a33;
 }
 
 .top-header-3{
-    background: #944743;
+    background: #bc3a33;
 }
 
 .sub-banner .breadcrumbs li a:hover{
-    color: #944743;
+    color: #bc3a33;
 }
 
 .search-contents-3 {
-    border-top: 3px solid #944743;
+    border-top: 3px solid #bc3a33;
     background: #eee;
 }
 
 .helping-center .icon {
-    color: #944743;
+    color: #bc3a33;
 }
 
 .header-contact ul li i {
-    color: #944743;
+    color: #bc3a33;
 }
 
 .services-box i{
-    color: #944743;
+    color: #bc3a33;
 }
 
 .customers-say-box .detail ul li i{
-    color: #944743;
+    color: #bc3a33;
 }
 
 .attachments a:hover{
-    color: #944743;
+    color: #bc3a33;
 }
 
 .btn-outline2{
-    border: solid 2px #944743;
-    color: #944743;
+    border: solid 2px #bc3a33;
+    color: #bc3a33;
 }
 
 .btn-outline2:hover{
-    border: solid 2px #944743;
-    background: #944743;
+    border: solid 2px #bc3a33;
+    background: #bc3a33;
     color: #fff;
 }
 
 .hotel-box .detail h3 a{
-    color: #944743;
+    color: #bc3a33;
 }
 
 .hotel-box-list .detail h3 a{
-    color: #944743;
+    color: #bc3a33;
 }
 
 .events-box .date-box {
-    color: #944743;
+    color: #bc3a33;
 }
 
 .events-box-grid .events-content ul li i{
-    color: #944743;
+    color: #bc3a33;
 }
 
 .additional-details-list li a:hover{
-    color: #944743;
+    color: #bc3a33;
 }
 
 table.manage-table td.action a:hover{
-    color: #944743;
+    color: #bc3a33;
 }
 
 .numbered.color.filled ol > li::before {
-    border: 1px solid #944743;
-    background-color: #944743;
+    border: 1px solid #bc3a33;
+    background-color: #bc3a33;
 }
 
 .numbered.color ol > li::before {
-    border: 1px solid #944743;
-    color: #944743;
+    border: 1px solid #bc3a33;
+    color: #bc3a33;
 }
 
 .map-edu-list li i{
-    color: #944743;
+    color: #bc3a33;
 }
 
 .main-header-4 .navbar-default .nav > li > a:hover {
-    color: #944743 !important;
+    color: #bc3a33 !important;
 }
 
 .flatpickr-day.selected, .flatpickr-day.selected:focus, .flatpickr-day.selected:hover {
-    border-color: #944743;
-    background: #944743;
+    border-color: #bc3a33;
+    background: #bc3a33;
     color: #fff;
 }
 
 .flatpickr-current-month {
-    color: #944743;
+    color: #bc3a33;
 }
 
 .flatpickr-month {
-    fill: #944743;
+    fill: #bc3a33;
 }
 
 .flatpickr-next-month svg:hover, .flatpickr-prev-month svg:hover {
-    fill: #944743;
+    fill: #bc3a33;
 }
 
 
 .main-header .navbar-default .nav > li > a.btn-theme-sm-outline {
-    color: #944743 !important;
+    color: #bc3a33 !important;
     background: transparent;
-    border: solid 2px #944743 !important;
+    border: solid 2px #bc3a33 !important;
 }
 
 .main-header .navbar-default .nav > li > a.btn-theme-sm-outline:hover {
     color: #FFF !important;
-    background: #944743;
-    border: solid 2px #944743 !important;
+    background: #bc3a33;
+    border: solid 2px #bc3a33 !important;
 }
 
 @media (max-width: 768px) {
 
     .navbar-default .navbar-toggle .icon-bar {
-        background: #944743;
+        background: #bc3a33;
     }
 
     .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus, .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
-        background-color: #944743;
+        background-color: #bc3a33;
     }
 
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
@@ -486,17 +486,17 @@ table.manage-table td.action a:hover{
     }
 
     .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
-        border-bottom: solid 1px #944743;
+        border-bottom: solid 1px #bc3a33;
     }
 
     .main-header .navbar-default .nav > li > a:hover {
-        border-bottom: solid 1px #944743;
+        border-bottom: solid 1px #bc3a33;
     }
 
     .navbar-default .navbar-nav > .active > a,
     .navbar-default .navbar-nav > .active > a:focus,
     .navbar-default .navbar-nav > .active > a:hover {
-        color: #944743 !important;
-        border-bottom: solid 1px #944743 !important;
+        color: #bc3a33 !important;
+        border-bottom: solid 1px #bc3a33 !important;
     }
 }

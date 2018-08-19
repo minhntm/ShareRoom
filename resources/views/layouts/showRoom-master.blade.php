@@ -18,22 +18,22 @@
     @yield('styles')
 </head>
 <body>
-@include('shared.navbar')
-@include('auth.login-modal')
-@include('auth.register-modal')
-<div class="show-room-content">
-    @foreach ($errors->all() as $error)
-        <p class="alert alert-danger">{{ $error }}</p>
-    @endforeach
+    @include('shared.navbar')
+    @include('auth.login-modal')
+    @include('auth.register-modal')
+    <div class="show-room-content">
+        @foreach ($errors->all() as $error)
+            <p class="alert alert-danger">{{ $error }}</p>
+        @endforeach
 
-    @if (session('status'))
-        <div class="alert alert-success">
-            {{ session('status') }}
-        </div>
-    @endif
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
 
-    @yield('scripts')
-    @yield('content')
-</div>
+        @yield('scripts')
+        @yield('content')
+    </div>
 </body>
 </html>

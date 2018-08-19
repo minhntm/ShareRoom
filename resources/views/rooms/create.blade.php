@@ -49,6 +49,14 @@
                 <br>
                 <div class="row">
                     <div class="col form-group">
+                        {!! Form::label('rule', 'Home Rules', ['class' => 'control-label']) !!}
+                        {!! Form::textarea('rule', old('rule'), ['placeholder' => 'What that gues can and can not', 'class' => 'form-control']) !!}
+                    </div>
+                </div>
+
+                <br>
+                <div class="row">
+                    <div class="col form-group">
                         {!! Form::label('address', trans('app.address'), ['class' => 'control-label']) !!}
                         {!! Form::text('address', old('address'), ['placeholder' => trans('app.room-address-placeholder'), 'class' => 'form-control']) !!}
                     </div>
@@ -70,8 +78,8 @@
                             {!! Form::checkbox('is_tv', 1) !!} {{ trans('app.tv') }}
                         </div>
                         <div class="form-group">
-                            {!! Form::hidden('is_kitchen', 0) !!}
-                            {!! Form::checkbox('is_kitchen', 1) !!} {{ trans('app.kitchen') }}
+                            {!! Form::hidden('is_air', 0) !!}
+                            {!! Form::checkbox('is_air', 1) !!} {{ trans('app.air') }}
                         </div>
                     </div>
                     <div class="col">
@@ -80,14 +88,14 @@
                             {!! Form::checkbox('is_internet', 1) !!} {{ trans('app.internet') }}
                         </div>
                         <div class="form-group">
-                            {!! Form::hidden('is_heating', 0) !!}
-                            {!! Form::checkbox('is_heating', 1) !!} {{ trans('app.heating') }}
+                            {!! Form::hidden('is_phone', 0) !!}
+                            {!! Form::checkbox('is_phone', 1) !!} Telephone
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
-                            {!! Form::hidden('is_air', 0) !!}
-                            {!! Form::checkbox('is_air', 1) !!} {{ trans('app.air') }}
+                            {!! Form::hidden('is_kitchen', 0) !!}
+                            {!! Form::checkbox('is_kitchen', 1) !!} Kitchen
                         </div>
                     </div>
                 </div>
