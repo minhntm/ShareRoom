@@ -13,6 +13,7 @@
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.4.0",
         "nesbot/carbon": "1.25.*",
+        "pusher/pusher-php-server": "^3.2",
         "spatie/laravel-permission": "^2.12"
     },
     "require-dev": {

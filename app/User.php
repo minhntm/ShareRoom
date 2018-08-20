@@ -77,4 +77,9 @@ class User extends Authenticatable
         }
         return null;
     }
+
+    public function messages()
+    {
+        return $this->hasMany('App\Message');
+    }
 }

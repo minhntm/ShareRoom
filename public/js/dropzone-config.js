@@ -36,8 +36,9 @@ Dropzone.options.myDropzone = {
         });
         
         this.on('success', function (file, res, e) {
-            // var res = JSON.parse(res);
-            var savedImageId = res.images_id;
+            var response = JSON.parse(res);
+            console.log(response)
+            var savedImageId = response.images_id;
             for (let i = 0; i < savedImageId.length; i++){
                 if (!imagesId.includes(savedImageId[i])) {
                     imagesId.push(savedImageId[i]);
