@@ -27,8 +27,14 @@ class ReservationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($user_id)
     {
+        $reservations = Auth::user()->reservations()->get();
+        if($user_id == Auth::user()->id){
+            return view('reservations.index', compact('reservations'));
+        } else {
+            return view('shared.error404');
+        }
     }
 
     public function preload(ReservationPreloadFormRequest $request)
@@ -77,7 +83,7 @@ class ReservationController extends Controller
         $data['user_id'] = $user_id;
         $reservation = Reservation::create($data);
 
-        return redirect()->route('rooms.show', $room_id)->with('status', trans('app.book-success'));
+        return redirect()->route('users.reservation.index', $user_id)->with('status', trans('app.book-success'));
     }
 
     /**
@@ -86,8 +92,10 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($user_id, $reservation_id)
     {
-        //
+        $reservation = Reservation::findOrFail($reservation_id);
+        $reservation->delete();
+        return redirect()->route('users.reservation.index', $user_id)->with('status', trans('app.delete-reservation-done'));
     }
 }

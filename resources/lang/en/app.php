@@ -136,10 +136,19 @@ return [
     'room' => 'Rooms',
     'require' => 'Require',
     'view-profile' => 'View Profile',
+    'reservation' => 'Reservation',
     // reservation
     'booking' => 'Book now',
     'start-date' => 'Start date',
-    'end-date' => 'End date', 
+    'end-date' => 'End date',
+    'status' => 'Status',
+    'on' => 'On',
+    'off' => 'Off',
+    'read-more' => 'Read more',
     'book-success' => 'Your reservation has been created',
     'invalid-range' => 'Invalid date range.',
+
+    'show-price' => '$ :price /night',
+    'delete' => 'Delete',
+    'delete-reservation-done' => 'Detele reservation successfully!'
 ];
