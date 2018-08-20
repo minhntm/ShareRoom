@@ -36,6 +36,10 @@ Route::group(['middleware' => ['auth']], function () {
     ]);
 
     Route::get('/rooms/test-show-room', 'RoomController@testShowRoom');
+
+    Route::get('chat', 'ChatsController@index');
+    Route::get('messages', 'ChatsController@fetchMessages');
+    Route::post('messages', 'ChatsController@sendMessage');
 });
 
 Route::get('/home', 'PageController@home')->name('home');
