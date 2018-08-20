@@ -22,4 +22,14 @@ class Review extends Model
     {
         return $this->hasMany('App\Like');
     }
+
+    public function upvotes()
+    {
+        return $this->likes()->where('is_vote', 1);
+    }
+
+    public function downvotes()
+    {
+        return $this->likes()->where('is_vote', 0);
+    }
 }

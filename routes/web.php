@@ -36,6 +36,11 @@ Route::group(['middleware' => ['auth']], function () {
     ]);
 
     Route::get('/rooms/test-show-room', 'RoomController@testShowRoom');
+    Route::resource('likes', 'LikeController')->only([
+        'store', 'destroy', 'update'
+    ]);
+
+    // Route::get('/likes/{id}', 'LikeController@show');
 });
 
 Route::get('/home', 'PageController@home')->name('home');

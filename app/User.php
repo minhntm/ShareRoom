@@ -55,4 +55,26 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Like');
     }
+
+    public function hasLike($reviewId)
+    {
+        $likes = $this->likes()->get();
+        foreach ($likes as $like) {
+            if ($like->review_id == $reviewId) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function getLike($reviewId)
+    {
+        $likes = $this->likes()->get();
+        foreach ($likes as $like) {
+            if ($like->review_id == $reviewId) {
+                return $like;
+            }
+        }
+        return null;
+    }
 }
