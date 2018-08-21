@@ -61,3 +61,12 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
 
 Route::get('/preload', 'ReservationController@preload')->name('preload');
 Route::get('/preview', 'ReservationController@preview')->name('preview');
+
+Route::get('/welcome', function () {
+   return view('welcome');
+});
+
+Route::get('test', function () {
+    event(new App\Events\StatusLiked('Someone'));
+    return "Event has been sent!";
+});

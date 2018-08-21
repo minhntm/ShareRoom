@@ -2,7 +2,7 @@
     <div id="user_stars"></div>
     {{ Form::text('comment', old('comment'), ['placeholder' => 'Your comment']) }}
     {{ Form::hidden('room_id', $room->id) }}
-    {{ Form::submit('Submit', ['class' => 'btn btn-primary btn-theme']) }}
+    {{ Form::submit('Submit', ['class' => 'btn btn-primary btn-theme', 'id' => 'submit']) }}
 {{ Form::close() }}
 
 <script>
@@ -10,5 +10,11 @@
         path: '{{ url('/bower_components/jquery-raty/lib/images') }}',
         scoreName: 'star',
         score: 1
-    })
+    });
+
+    $(document).on('click', '#submit', function(e){
+        e.preventDefault();
+
+    });
+
 </script>
