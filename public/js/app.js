@@ -14008,7 +14008,9 @@ var app = new Vue({
     el: '#app',
 
     data: {
-        messages: []
+        messages: [],
+        to_id: window.TO_ID,
+        user: window.USER
     },
 
     created: function created() {
@@ -14016,11 +14018,20 @@ var app = new Vue({
 
         this.fetchMessages();
         Echo.private('chat').listen('MessageSent', function (e) {
-            _this.messages.push({
-                message: e.message.message,
-                user: e.user
-            });
+            if (e.toUser.id === _this.user) {
+                _this.messages.push({
+                    message: e.message.message,
+                    user: e.user,
+                    created_at: new Date().toLocaleString()
+                });
+            }
         });
+    },
+    updated: function updated() {
+        console.log('asjfalsdkjf');
+        var container = this.$el.querySelector("#container");
+        console.log(container);
+        container.scrollTop = container.scrollHeight;
     },
 
 
@@ -14028,8 +14039,9 @@ var app = new Vue({
         fetchMessages: function fetchMessages() {
             var _this2 = this;
 
-            axios.get('/messages').then(function (response) {
+            axios.get('/messages?to_id=' + this.to_id).then(function (response) {
                 _this2.messages = response.data;
+                console.log(response);
             });
         },
         addMessage: function addMessage(message) {
@@ -57283,14 +57295,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['messages']
+    props: ['messages', 'user', 'name'],
+
+    methods: {
+        getName: function getName(message) {
+            var check = this.user.id === message.user.id;
+            if (check) {
+                return message.user.name;
+            } else {
+                return this.name;
+            }
+        },
+        getClass: function getClass(message) {
+            var check = this.user.id === message.user.id;
+            return {
+                'self': check,
+                'other': !check
+            };
+        },
+        getTime: function getTime(message) {
+            return message.created_at.substr(11, 5);
+        }
+    },
+
+    watch: {
+        messages: {
+            handler: function handler(n, o) {
+                var messageDisplay = this.$refs.chatTab;
+                messageDisplay.scrollTop = messageDisplay.scrollHeight;
+            },
+
+            deep: true
+        }
+    }
 });
 
 /***/ }),
@@ -57302,26 +57341,18 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "ul",
-    { staticClass: "chat" },
+    "ol",
+    { ref: "chatTab", staticClass: "chat", attrs: { id: "chat-tab" } },
     _vm._l(_vm.messages, function(message) {
-      return _c("li", { staticClass: "left clearfix" }, [
-        _c("div", { staticClass: "chat-body clearfix" }, [
-          _c("div", { staticClass: "header" }, [
-            _c("strong", { staticClass: "primary-font" }, [
-              _vm._v(
-                "\n                    " +
-                  _vm._s(message.user.name) +
-                  "\n                "
-              )
-            ])
+      return _c("li", { key: message.id, class: _vm.getClass(message) }, [
+        _c("div", { staticClass: "msg" }, [
+          _c("div", { staticClass: "user" }, [
+            _vm._v(_vm._s(_vm.getName(message)))
           ]),
           _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "\n                " + _vm._s(message.message) + "\n            "
-            )
-          ])
+          _c("p", [_vm._v(_vm._s(message.message))]),
+          _vm._v(" "),
+          _c("time", [_vm._v(_vm._s(_vm.getTime(message)))])
         ])
       ])
     })
@@ -57404,7 +57435,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['user'],
+    props: ['user', 'to'],
 
     data: function data() {
         return {
@@ -57417,7 +57448,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         sendMessage: function sendMessage() {
             this.$emit('messagesent', {
                 user: this.user,
-                message: this.newMessage
+                message: this.newMessage,
+                created_at: new Date().toLocaleString(),
+                to_id: this.to
             });
 
             this.newMessage = '';
@@ -57433,7 +57466,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "input-group" }, [
+  return _c("div", { staticClass: "typezone" }, [
     _c("input", {
       directives: [
         {
@@ -57443,7 +57476,7 @@ var render = function() {
           expression: "newMessage"
         }
       ],
-      staticClass: "form-control input-sm",
+      staticClass: "form-control",
       attrs: {
         id: "btn-input",
         type: "text",
@@ -57468,19 +57501,7 @@ var render = function() {
           _vm.newMessage = $event.target.value
         }
       }
-    }),
-    _vm._v(" "),
-    _c("span", { staticClass: "input-group-btn" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary btn-sm",
-          attrs: { id: "btn-chat" },
-          on: { click: _vm.sendMessage }
-        },
-        [_vm._v("\n            Send\n        ")]
-      )
-    ])
+    })
   ])
 }
 var staticRenderFns = []

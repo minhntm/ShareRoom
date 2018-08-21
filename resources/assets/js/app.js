@@ -23,24 +23,30 @@ const app = new Vue({
     el: '#app',
 
     data: {
-        messages: []
+        messages: [],
+        to_id: window.TO_ID,
+        user: window.USER
     },
 
     created() {
         this.fetchMessages();
         Echo.private('chat')
             .listen('MessageSent', (e) => {
-                this.messages.push({
-                    message: e.message.message,
-                    user: e.user
-                });
+                if (e.toUser.id === this.user){
+                    this.messages.push({
+                        message: e.message.message,
+                        user: e.user,
+                        created_at: new Date().toLocaleString()
+                    });
+                }
             });
     },
 
     methods: {
         fetchMessages() {
-            axios.get('/messages').then(response => {
+            axios.get('/messages?to_id='+this.to_id).then(response => {
                 this.messages = response.data;
+                console.log(response)
             });
         },
 
