@@ -11,6 +11,7 @@
                         </div>
                         <a href="{{ route('upload') }}" class="list-group-item list-group-item-action sidebar-item">{{ trans('app.photo') }}</a>
                         <a href="{{ route('rooms.index') }}" class="list-group-item list-group-item-action sidebar-item">{{ trans('app.room') }}</a>
+                        <a href="{{ route('users.reservation.index', ['user' => $user->id]) }}" class="list-group-item list-group-item-action sidebar-item">{{ trans('app.reservation') }}</a>
                         <a href="#" class="list-group-item list-group-item-action sidebar-item">{{ trans('app.references') }}</a>
                         <div class="sidebar-footer">
                             {{ Form::open(['method' => 'GET', 'route' => ['users.show', $user->id]]) }}
@@ -29,7 +30,7 @@
                             {{ trans('app.require') }}
                         </div>
                         <div class="card-body">
-                            {{ Form::open(['method' => 'PUT', 'url' => route('users.update', 4)]) }}
+                            {{ Form::open(['method' => 'PUT', 'url' => route('users.update', $user->id)]) }}
                             @foreach ($errors->all() as $error)
                                 <p class="alert alert-danger">{{ $error }}</p>
                             @endforeach

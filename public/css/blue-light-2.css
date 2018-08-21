@@ -70,6 +70,9 @@ a:hover {
 
 .read-more-btn{
     color:  #bc3a33;
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
 }
 
 

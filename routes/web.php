@@ -26,11 +26,18 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/rooms/upload', 'RoomController@uploadImage')->name('upload');
     Route::post('/rooms/delete', 'RoomController@destroyImage');
 
-    Route::resource('users', 'UserController');
+    Route::resource('users', 'UserController')->only([
+        'edit', 'show', 'update', 'showReservation'
+    ]);
 
     Route::resource('rooms.reservations', 'ReservationController')->only([
-        'store', 'destroy', 'index'
+        'store',
     ]);
+
+    Route::resource('users.reservation', 'ReservationController')->only([
+        'index', 'destroy'
+    ]);
+
     Route::resource('rooms.reviews', 'ReviewController')->only([
         'store', 'destroy'
     ]);

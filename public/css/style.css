@@ -2125,6 +2125,7 @@ footer ul {
 
 .img-responsive {
     width: 100%;
+    height: 350px;
 }
 
 /** AGENT BOX LIST AREA START **/
@@ -2553,6 +2554,8 @@ footer ul {
     background: #FFFFFF;
     margin: 0 auto 30px;
     float: left;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height: 350px;
 }
 
 .hotel-box-list:hover {
@@ -5242,9 +5245,10 @@ span.round-tab:hover i {
     }
 
     .hotel-box-list .hiddenmt-15 {
-        margin-top: 20px;
+        position: absolute;
+        right: 30px;
+        bottom: 30px;
     }
-
     .hidden-mb-20{
         margin-bottom: 10px;
     }
