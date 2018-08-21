@@ -19,13 +19,8 @@
                                 </a>
                                 {{ Form::open(['id' => 'delete-form', 'method' => 'DELETE', 'url' => route('rooms.reviews.destroy', ['room' => $review->room()->get()[0]->id, 'review' => $review->id])]) }}
                                 {{ Form::close() }}
-                            @else
-                                <a onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                                <!-- {{ Form::open(['id' => 'delete-form', 'method' => 'DELETE', 'url' => route('rooms.reviews.destroy', ['room' => $review->room()->get()[0]->id, 'review' => $review->id])]) }}
-                                {{ Form::close() }} -->
                             @endif
+
                         </div>
                     @endauth
                     <div class="comment-meta-date">
@@ -33,6 +28,40 @@
                     </div>
                 </div>
                 <div class="clearfix"></div>
+                @auth 
+                    @if (Auth::user()->id !== $review->user()->get()[0]->id)
+                        @if (Auth::user()->hasLike($review->id))
+                            @if (Auth::user()->getLike($review->id)->is_vote === 1)
+                                <a id="upvote-{{$review->id}}" class="liked">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span id="upvote-count-{{$review->id}}">{{ count($review->upvotes) }}</span>
+                                </a> 
+                                <a id="downvote-{{$review->id}}">
+                                    <i class="fas fa-arrow-down"></i>
+                                    <span id="downvote-count-{{$review->id}}">{{ count($review->downvotes) }}</span>
+                                </a> 
+                            @else
+                                <a id="upvote-{{$review->id}}">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span id="upvote-count-{{$review->id}}">{{ count($review->upvotes) }}</span>
+                                </a> 
+                                <a id="downvote-{{$review->id}}" class="liked">
+                                    <i class="fas fa-arrow-down"></i>
+                                    <span id="downvote-count-{{$review->id}}">{{ count($review->downvotes) }}</span>
+                                </a> 
+                            @endif
+                        @else
+                            <a id="upvote-{{$review->id}}">
+                                <i class="fas fa-arrow-up"></i>
+                                <span id="upvote-count-{{$review->id}}">{{ count($review->upvotes) }}</span>
+                            </a> 
+                            <a id="downvote-{{$review->id}}">
+                                <i class="fas fa-arrow-down"></i>
+                                <span id="downvote-count-{{$review->id}}">{{ count($review->downvotes) }}</span>
+                            </a> 
+                        @endif
+                    @endif
+                @endauth
                 <div class="comment-body">
                     <div class="comment-rating">
                         <div id="star_{{ $review->id }}"></div>
@@ -49,5 +78,134 @@
         path: '{{ url('/bower_components/jquery-raty/lib/images') }}',
         readOnly: true,
         score: {{ $review->star }}
+    })
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $(document).ready(function() {
+
+    user_like = '{!! Auth::user()->hasLike($review->id) !!}';
+    is_vote = '{!! Auth::user()->getLike($review->id)['is_vote'] !!}';
+    like_id = '{!! Auth::user()->getLike($review->id)['id'] !!}';
+    upvote_count = {{ count($review->upvotes) }};
+    downvote_count = {{ count($review->downvotes) }};
+
+    destroy_route = '{{ route('likes.destroy', 1) }}';
+    update_route = '{{ route('likes.update', 1)}}';
+
+    destroy_route = destroy_route.substring(0, destroy_route.length-1);
+    update_route = update_route.substring(0, update_route.length-1);
+    
+
+    $(document).on('click', '#upvote-{{$review->id}}', function(e){
+        e.preventDefault();
+        if ( user_like === '1' ) {
+            if ( is_vote === '1' ) {
+                $.ajax({
+                    url: destroy_route + like_id,
+                    type: 'DELETE',
+                    // data: {'review_id': '{{$review->id}}', 'is_vote': '1'},
+                    success: function(data) {
+                        $('#upvote-{{$review->id}}').removeClass('liked');
+                        user_like = data['user_like'];
+                        is_vote = data['is_vote'];
+                        like_id = data['like_id'];
+                        upvote_count--;
+                        $('#upvote-count-{{$review->id}}').text(''+upvote_count);
+                    }
+                })
+            } else {
+                $.ajax({
+                    url: update_route + like_id,
+                    type: 'PUT',
+                    data: {'review_id': '{{$review->id}}', 'is_vote': '1'},
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#upvote-{{$review->id}}').addClass('liked');
+                        $('#downvote-{{$review->id}}').removeClass('liked');
+                        user_like = data['user_like'];
+                        is_vote = data['is_vote'];
+                        like_id = data['like_id'];
+                        upvote_count++;
+                        downvote_count--;
+                        $('#upvote-count-{{$review->id}}').text(''+upvote_count);
+                        $('#downvote-count-{{$review->id}}').text(''+downvote_count);
+                    }
+                })
+            }
+        } else {
+            $.ajax({
+                url: '{{route('likes.store')}}',
+                type: 'POST',
+                data: {'review_id': '{{$review->id}}', 'is_vote': '1'},
+                dataType: 'json',
+                success: function(data) {
+                    $('#upvote-{{$review->id}}').addClass('liked');
+                    user_like = data['user_like'];
+                    is_vote = data['is_vote'];
+                    like_id = data['like_id'];
+                    upvote_count++;
+                    $('#upvote-count-{{$review->id}}').text(''+upvote_count);
+                }
+            })
+        }
+    })
+
+    $(document).on('click', '#downvote-{{$review->id}}', function(e){
+        e.preventDefault();
+        if ( user_like === '1' ) {
+            if ( is_vote === '1' ) {
+                $.ajax({
+                    url: update_route + like_id,
+                    type: 'PUT',
+                    data: {'review_id': '{{$review->id}}', 'is_vote': '0'},
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#upvote-{{$review->id}}').removeClass('liked');
+                        $('#downvote-{{$review->id}}').addClass('liked');
+                        user_like = data['user_like'];
+                        is_vote = data['is_vote'];
+                        like_id = data['like_id'];
+                        upvote_count--;
+                        downvote_count++;
+                        $('#upvote-count-{{$review->id}}').text(''+upvote_count);
+                        $('#downvote-count-{{$review->id}}').text(''+downvote_count);
+                    }
+                })
+            } else {
+                $.ajax({
+                    url: destroy_route + like_id,
+                    type: 'DELETE',
+                    // data: {'review_id': '{{$review->id}}', 'is_vote': '0'},
+                    success: function(data) {
+                        $('#downvote-{{$review->id}}').removeClass('liked');
+                        user_like = data['user_like'];
+                        is_vote = data['is_vote'];
+                        like_id = data['like_id'];
+                        downvote_count--;
+                        $('#downvote-count-{{$review->id}}').text(''+downvote_count);
+                    }
+                })
+            }
+        } else {
+            $.ajax({
+                url: '{{route('likes.store')}}',
+                type: 'POST',
+                data: {'review_id': '{{$review->id}}', 'is_vote': '0'},
+                dataType: 'json',
+                success: function(data) {
+                    $('#downvote-{{$review->id}}').addClass('liked');
+                    user_like = data['user_like'];
+                    is_vote = data['is_vote'];
+                    like_id = data['like_id'];
+                    downvote_count++;
+                    $('#downvote-count-{{$review->id}}').text(''+downvote_count);
+                }
+            })
+        }
+    })
     })
 </script>

@@ -26,16 +26,26 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/rooms/upload', 'RoomController@uploadImage')->name('upload');
     Route::post('/rooms/delete', 'RoomController@destroyImage');
 
-    Route::resource('users', 'UserController');
+    Route::resource('users', 'UserController')->only([
+        'edit', 'show', 'update', 'showReservation'
+    ]);
 
     Route::resource('rooms.reservations', 'ReservationController')->only([
-        'store', 'destroy', 'index'
+        'store',
     ]);
+
+    Route::resource('users.reservation', 'ReservationController')->only([
+        'index', 'destroy'
+    ]);
+
     Route::resource('rooms.reviews', 'ReviewController')->only([
         'store', 'destroy'
     ]);
 
     Route::get('/rooms/test-show-room', 'RoomController@testShowRoom');
+    Route::resource('likes', 'LikeController')->only([
+        'store', 'destroy', 'update'
+    ]);
 
     Route::get('chat', 'ChatsController@index')->name('message');
     Route::get('chat/{id}', 'ChatsController@chat');
@@ -52,3 +62,12 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
 
 Route::get('/preload', 'ReservationController@preload')->name('preload');
 Route::get('/preview', 'ReservationController@preview')->name('preview');
+
+Route::get('/welcome', function () {
+   return view('welcome');
+});
+
+Route::get('test', function () {
+    event(new App\Events\StatusLiked('Someone'));
+    return "Event has been sent!";
+});

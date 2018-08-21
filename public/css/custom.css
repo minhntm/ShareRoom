@@ -352,5 +352,8 @@ input[type=checkbox]:checked {
     font-weight: 600;
 }
 .text-line-through {
-  text-decoration: line-through
+    text-decoration: line-through
+}
+.liked {
+    color: #bc3a33 !important;
 }

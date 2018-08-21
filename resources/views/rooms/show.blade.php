@@ -182,15 +182,3 @@
         </div>
     </div>
 @endsection
-
-
-@section('scripts')
-    <script src="{{ url('/bower_components/jquery-ui/ui/widgets/datepicker.js') }}"></script>
-    <script src="{{ url('/bower_components/jquery-raty/lib/jquery.raty.js') }}"></script>
-@endsection
-
-@section('styles')
-    <!-- <link rel="stylesheet" type="text/css" href="{{ url('/bower_components/jquery-ui/themes/base/datepicker.css') }}"> -->
-    <link rel="stylesheet" type="text/css" href="{{ url('/css/jquery-ui-1.10.0.custom.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url('/bower_components/jquery-raty/lib/jquery.raty.css') }}">
-@endsection
