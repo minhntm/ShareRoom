@@ -41,7 +41,6 @@ class ReviewController extends Controller
         $user_id = Auth::user()->id;
         $data['user_id'] = $user_id;
         $review = Review::create($data);
-        event(new App);
         return redirect()->route('rooms.show', $request->room_id);
     }
 

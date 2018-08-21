@@ -33,30 +33,30 @@
                         @if (Auth::user()->hasLike($review->id))
                             @if (Auth::user()->getLike($review->id)->is_vote === 1)
                                 <a id="upvote-{{$review->id}}" class="liked">
-                                    <i class="fas fa-long-arrow-alt-up"></i> Upvote
+                                    <i class="fas fa-arrow-up"></i>
                                     <span id="upvote-count-{{$review->id}}">{{ count($review->upvotes) }}</span>
                                 </a> 
                                 <a id="downvote-{{$review->id}}">
-                                    <i class="fas fa-long-arrow-alt-down"></i> Downvote
+                                    <i class="fas fa-arrow-down"></i>
                                     <span id="downvote-count-{{$review->id}}">{{ count($review->downvotes) }}</span>
                                 </a> 
                             @else
                                 <a id="upvote-{{$review->id}}">
-                                    <i class="fas fa-long-arrow-alt-up"></i> Upvote
+                                    <i class="fas fa-arrow-up"></i>
                                     <span id="upvote-count-{{$review->id}}">{{ count($review->upvotes) }}</span>
                                 </a> 
                                 <a id="downvote-{{$review->id}}" class="liked">
-                                    <i class="fas fa-long-arrow-alt-down"></i> Downvote
+                                    <i class="fas fa-arrow-down"></i>
                                     <span id="downvote-count-{{$review->id}}">{{ count($review->downvotes) }}</span>
                                 </a> 
                             @endif
                         @else
                             <a id="upvote-{{$review->id}}">
-                                <i class="fas fa-long-arrow-alt-up"></i> Upvote
+                                <i class="fas fa-arrow-up"></i>
                                 <span id="upvote-count-{{$review->id}}">{{ count($review->upvotes) }}</span>
                             </a> 
                             <a id="downvote-{{$review->id}}">
-                                <i class="fas fa-long-arrow-alt-down"></i> Downvote
+                                <i class="fas fa-arrow-down"></i>
                                 <span id="downvote-count-{{$review->id}}">{{ count($review->downvotes) }}</span>
                             </a> 
                         @endif

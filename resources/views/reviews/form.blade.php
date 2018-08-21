@@ -12,9 +12,9 @@
         score: 1
     });
 
-    $(document).on('click', '#submit', function(e){
-        e.preventDefault();
+    // $(document).on('click', '#submit', function(e){
+    //     e.preventDefault();
 
-    });
+    // });
 
 </script>
