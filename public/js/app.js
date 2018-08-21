@@ -14027,12 +14027,6 @@ var app = new Vue({
             }
         });
     },
-    updated: function updated() {
-        console.log('asjfalsdkjf');
-        var container = this.$el.querySelector("#container");
-        console.log(container);
-        container.scrollTop = container.scrollHeight;
-    },
 
 
     methods: {
