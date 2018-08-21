@@ -19,7 +19,6 @@
     "jquery": "^3.3.1",
     "components-font-awesome": "^5.0.6",
     "jquery-ui": "^1.12.1",
-    "jquery-raty": "https://github.com/wbotelhos/raty.git",
-    "bootstrap-select": "https://github.com/snapappointments/bootstrap-select.git#^1.13.1"
+    "jquery-raty": "https://github.com/wbotelhos/raty.git"
   }
 }

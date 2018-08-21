@@ -34,30 +34,33 @@
                             @if (Auth::user()->getLike($review->id)->is_vote === 1)
                                 <a id="upvote-{{$review->id}}" class="liked">
                                     <i class="fas fa-arrow-up"></i>
-                                    <span id="upvote-count-{{$review->id}}">{{ count($review->upvotes) }}</span>
+                                    <!-- <span id="upvote-count-{{$review->id}}">{{ count($review->upvotes) }}</span> -->
                                 </a> 
+                                <span id="up-downvote-subtract-{{$review->id}}">{{ $review->upvoteDownvoteSubtraction() }}</span>
                                 <a id="downvote-{{$review->id}}">
                                     <i class="fas fa-arrow-down"></i>
-                                    <span id="downvote-count-{{$review->id}}">{{ count($review->downvotes) }}</span>
+                                    <!-- <span id="downvote-count-{{$review->id}}">{{ count($review->downvotes) }}</span> -->
                                 </a> 
                             @else
                                 <a id="upvote-{{$review->id}}">
                                     <i class="fas fa-arrow-up"></i>
-                                    <span id="upvote-count-{{$review->id}}">{{ count($review->upvotes) }}</span>
+                                    <!-- <span id="upvote-count-{{$review->id}}">{{ count($review->upvotes) }}</span> -->
                                 </a> 
+                                <span id="up-downvote-subtract-{{$review->id}}">{{ $review->upvoteDownvoteSubtraction() }}</span>
                                 <a id="downvote-{{$review->id}}" class="liked">
                                     <i class="fas fa-arrow-down"></i>
-                                    <span id="downvote-count-{{$review->id}}">{{ count($review->downvotes) }}</span>
+                                    <!-- <span id="downvote-count-{{$review->id}}">{{ count($review->downvotes) }}</span> -->
                                 </a> 
                             @endif
                         @else
                             <a id="upvote-{{$review->id}}">
                                 <i class="fas fa-arrow-up"></i>
-                                <span id="upvote-count-{{$review->id}}">{{ count($review->upvotes) }}</span>
+                                <!-- <span id="upvote-count-{{$review->id}}">{{ count($review->upvotes) }}</span> -->
                             </a> 
+                            <span id="up-downvote-subtract-{{$review->id}}">{{ $review->upvoteDownvoteSubtraction() }}</span>
                             <a id="downvote-{{$review->id}}">
                                 <i class="fas fa-arrow-down"></i>
-                                <span id="downvote-count-{{$review->id}}">{{ count($review->downvotes) }}</span>
+                                <!-- <span id="downvote-count-{{$review->id}}">{{ count($review->downvotes) }}</span> -->
                             </a> 
                         @endif
                     @endif
@@ -87,11 +90,12 @@
 
     $(document).ready(function() {
 
-    user_like = '{!! Auth::user()->hasLike($review->id) !!}';
-    is_vote = '{!! Auth::user()->getLike($review->id)['is_vote'] !!}';
-    like_id = '{!! Auth::user()->getLike($review->id)['id'] !!}';
-    upvote_count = {{ count($review->upvotes) }};
-    downvote_count = {{ count($review->downvotes) }};
+    user_like_{{$review->id}} = '{!! Auth::user()->hasLike($review->id) !!}';
+    is_vote_{{$review->id}} = '{!! Auth::user()->getLike($review->id)['is_vote'] !!}';
+    like_id_{{$review->id}} = '{!! Auth::user()->getLike($review->id)['id'] !!}';
+    // upvote_count_{{$review->id}} = {{ count($review->upvotes) }};
+    // downvote_count_{{$review->id}} = {{ count($review->downvotes) }};
+    upvote_downvote_subtraction_{{$review->id}} = {{ $review->upvoteDownvoteSubtraction() }};
 
     destroy_route = '{{ route('likes.destroy', 1) }}';
     update_route = '{{ route('likes.update', 1)}}';
@@ -102,37 +106,41 @@
 
     $(document).on('click', '#upvote-{{$review->id}}', function(e){
         e.preventDefault();
-        if ( user_like === '1' ) {
-            if ( is_vote === '1' ) {
+        if ( user_like_{{$review->id}} === '1' ) {
+            if ( is_vote_{{$review->id}} === '1' ) {
                 $.ajax({
-                    url: destroy_route + like_id,
+                    url: destroy_route + like_id_{{$review->id}},
                     type: 'DELETE',
                     // data: {'review_id': '{{$review->id}}', 'is_vote': '1'},
                     success: function(data) {
                         $('#upvote-{{$review->id}}').removeClass('liked');
-                        user_like = data['user_like'];
-                        is_vote = data['is_vote'];
-                        like_id = data['like_id'];
-                        upvote_count--;
-                        $('#upvote-count-{{$review->id}}').text(''+upvote_count);
+                        user_like_{{$review->id}} = data['user_like'];
+                        is_vote_{{$review->id}} = data['is_vote'];
+                        like_id_{{$review->id}} = data['like_id'];
+                        // upvote_count_{{$review->id}}--;
+                        // $('#upvote-count-{{$review->id}}').text(''+upvote_count_{{$review->id}});
+                        upvote_downvote_subtraction_{{$review->id}}--;
+                        $('#up-downvote-subtract-{{$review->id}}').text(''+upvote_downvote_subtraction_{{$review->id}});
                     }
                 })
             } else {
                 $.ajax({
-                    url: update_route + like_id,
+                    url: update_route + like_id_{{$review->id}},
                     type: 'PUT',
                     data: {'review_id': '{{$review->id}}', 'is_vote': '1'},
                     dataType: 'json',
                     success: function(data) {
                         $('#upvote-{{$review->id}}').addClass('liked');
                         $('#downvote-{{$review->id}}').removeClass('liked');
-                        user_like = data['user_like'];
-                        is_vote = data['is_vote'];
-                        like_id = data['like_id'];
-                        upvote_count++;
-                        downvote_count--;
-                        $('#upvote-count-{{$review->id}}').text(''+upvote_count);
-                        $('#downvote-count-{{$review->id}}').text(''+downvote_count);
+                        user_like_{{$review->id}} = data['user_like'];
+                        is_vote_{{$review->id}} = data['is_vote'];
+                        like_id_{{$review->id}} = data['like_id'];
+                        // upvote_count_{{$review->id}}++;
+                        // downvote_count_{{$review->id}}--;
+                        // $('#upvote-count-{{$review->id}}').text(''+upvote_count_{{$review->id}});
+                        // $('#downvote-count-{{$review->id}}').text(''+downvote_count_{{$review->id}});
+                        upvote_downvote_subtraction_{{$review->id}} = upvote_downvote_subtraction_{{$review->id}} + 2;
+                        $('#up-downvote-subtract-{{$review->id}}').text(''+upvote_downvote_subtraction_{{$review->id}});
                     }
                 })
             }
@@ -144,11 +152,13 @@
                 dataType: 'json',
                 success: function(data) {
                     $('#upvote-{{$review->id}}').addClass('liked');
-                    user_like = data['user_like'];
-                    is_vote = data['is_vote'];
-                    like_id = data['like_id'];
-                    upvote_count++;
-                    $('#upvote-count-{{$review->id}}').text(''+upvote_count);
+                    user_like_{{$review->id}} = data['user_like'];
+                    is_vote_{{$review->id}} = data['is_vote'];
+                    like_id_{{$review->id}} = data['like_id'];
+                    // upvote_count_{{$review->id}}++;
+                    // $('#upvote-count-{{$review->id}}').text(''+upvote_count_{{$review->id}});
+                    upvote_downvote_subtraction_{{$review->id}}++;
+                    $('#up-downvote-subtract-{{$review->id}}').text(''+upvote_downvote_subtraction_{{$review->id}});
                 }
             })
         }
@@ -156,37 +166,41 @@
 
     $(document).on('click', '#downvote-{{$review->id}}', function(e){
         e.preventDefault();
-        if ( user_like === '1' ) {
-            if ( is_vote === '1' ) {
+        if ( user_like_{{$review->id}} === '1' ) {
+            if ( is_vote_{{$review->id}} === '1' ) {
                 $.ajax({
-                    url: update_route + like_id,
+                    url: update_route + like_id_{{$review->id}},
                     type: 'PUT',
                     data: {'review_id': '{{$review->id}}', 'is_vote': '0'},
                     dataType: 'json',
                     success: function(data) {
                         $('#upvote-{{$review->id}}').removeClass('liked');
                         $('#downvote-{{$review->id}}').addClass('liked');
-                        user_like = data['user_like'];
-                        is_vote = data['is_vote'];
-                        like_id = data['like_id'];
-                        upvote_count--;
-                        downvote_count++;
-                        $('#upvote-count-{{$review->id}}').text(''+upvote_count);
-                        $('#downvote-count-{{$review->id}}').text(''+downvote_count);
+                        user_like_{{$review->id}} = data['user_like'];
+                        is_vote_{{$review->id}} = data['is_vote'];
+                        like_id_{{$review->id}} = data['like_id'];
+                        // upvote_count_{{$review->id}}--;
+                        // downvote_count_{{$review->id}}++;
+                        // $('#upvote-count-{{$review->id}}').text(''+upvote_count_{{$review->id}});
+                        // $('#downvote-count-{{$review->id}}').text(''+downvote_count_{{$review->id}});
+                        upvote_downvote_subtraction_{{$review->id}} = upvote_downvote_subtraction_{{$review->id}} - 2;
+                        $('#up-downvote-subtract-{{$review->id}}').text(''+upvote_downvote_subtraction_{{$review->id}});
                     }
                 })
             } else {
                 $.ajax({
-                    url: destroy_route + like_id,
+                    url: destroy_route + like_id_{{$review->id}},
                     type: 'DELETE',
                     // data: {'review_id': '{{$review->id}}', 'is_vote': '0'},
                     success: function(data) {
                         $('#downvote-{{$review->id}}').removeClass('liked');
-                        user_like = data['user_like'];
-                        is_vote = data['is_vote'];
-                        like_id = data['like_id'];
-                        downvote_count--;
-                        $('#downvote-count-{{$review->id}}').text(''+downvote_count);
+                        user_like_{{$review->id}} = data['user_like'];
+                        is_vote_{{$review->id}} = data['is_vote'];
+                        like_id_{{$review->id}} = data['like_id'];
+                        // downvote_count_{{$review->id}}--;
+                        // $('#downvote-count-{{$review->id}}').text(''+downvote_count_{{$review->id}});
+                        upvote_downvote_subtraction_{{$review->id}}++;
+                        $('#up-downvote-subtract-{{$review->id}}').text(''+upvote_downvote_subtraction_{{$review->id}});
                     }
                 })
             }
@@ -198,11 +212,13 @@
                 dataType: 'json',
                 success: function(data) {
                     $('#downvote-{{$review->id}}').addClass('liked');
-                    user_like = data['user_like'];
-                    is_vote = data['is_vote'];
-                    like_id = data['like_id'];
-                    downvote_count++;
-                    $('#downvote-count-{{$review->id}}').text(''+downvote_count);
+                    user_like_{{$review->id}} = data['user_like'];
+                    is_vote_{{$review->id}} = data['is_vote'];
+                    like_id_{{$review->id}} = data['like_id'];
+                    // downvote_count_{{$review->id}}++;
+                    // $('#downvote-count-{{$review->id}}').text(''+downvote_count_{{$review->id}});
+                    upvote_downvote_subtraction_{{$review->id}}--;
+                    $('#up-downvote-subtract-{{$review->id}}').text(''+upvote_downvote_subtraction_{{$review->id}});
                 }
             })
         }
