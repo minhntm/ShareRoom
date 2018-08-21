@@ -1,6 +1,7 @@
 <template>
     <ol class="chat" id="chat-tab" ref="chatTab">
         <li v-for="message in messages" v-bind:key="message.id" v-bind:class="getClass(message)">
+            <div class="avatar"><img src="/img/users/user.png" draggable="false"/></div>
             <div class="msg">
                 <div class="user">{{ getName(message) }}</div>
                 <p>{{ message.message }}</p>

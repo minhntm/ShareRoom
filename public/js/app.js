@@ -14027,12 +14027,6 @@ var app = new Vue({
             }
         });
     },
-    updated: function updated() {
-        console.log('asjfalsdkjf');
-        var container = this.$el.querySelector("#container");
-        console.log(container);
-        container.scrollTop = container.scrollHeight;
-    },
 
 
     methods: {
@@ -57295,6 +57289,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['messages', 'user', 'name'],
@@ -57345,6 +57340,8 @@ var render = function() {
     { ref: "chatTab", staticClass: "chat", attrs: { id: "chat-tab" } },
     _vm._l(_vm.messages, function(message) {
       return _c("li", { key: message.id, class: _vm.getClass(message) }, [
+        _vm._m(0, true),
+        _vm._v(" "),
         _c("div", { staticClass: "msg" }, [
           _c("div", { staticClass: "user" }, [
             _vm._v(_vm._s(_vm.getName(message)))
@@ -57358,7 +57355,16 @@ var render = function() {
     })
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "avatar" }, [
+      _c("img", { attrs: { src: "/img/users/user.png", draggable: "false" } })
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
