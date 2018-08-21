@@ -4,9 +4,7 @@
     <meta	name="viewport"	content="width=device-width,	initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{{ url('/bower_components/bootstrap/dist/css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('/css/custom.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url('/css/signin-signout.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('/bower_components/components-font-awesome/css/fontawesome-all.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url('/bower_components/bootstrap-select/dist/css/bootstrap-select.css') }}">
     <!-- import template -->
     <link rel="stylesheet" type="text/css" href="{{ url('/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('/css/blue-light-2.css') }}">
