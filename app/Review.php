@@ -32,4 +32,9 @@ class Review extends Model
     {
         return $this->likes()->where('is_vote', 0);
     }
+
+    public function upvoteDownvoteSubtraction()
+    {
+        return count($this->upvotes) - count($this->downvotes);
+    }
 }
