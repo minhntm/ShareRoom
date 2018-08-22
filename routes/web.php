@@ -42,9 +42,12 @@ Route::group(['middleware' => ['auth']], function () {
         'store', 'destroy'
     ]);
 
-    Route::get('/rooms/test-show-room', 'RoomController@testShowRoom');
     Route::resource('likes', 'LikeController')->only([
         'store', 'destroy', 'update'
+    ]);
+
+    Route::resource('bookmarks', 'BookmarkController')->only([
+        'store', 'destroy', 'index'
     ]);
 
     Route::get('chat', 'ChatsController@index')->name('message');

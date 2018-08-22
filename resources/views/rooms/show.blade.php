@@ -15,7 +15,11 @@
                     </div>
                     <div class="col-sm-5">
                         <div class="sub-banner-button-area-2-child">
-                            <button type="button" class="btn btn-light sub-banner-button-1">Save</button>
+                            <button id="save-btn" type="button" class="btn btn-light sub-banner-button-1">
+                                @auth
+                                    <span id="save-text">{{ Auth::user()->getBookmark($room->id) ? 'Saved' : 'Save' }}</span>
+                                @endauth
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -181,4 +185,44 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $(document).ready(function() {
+            bookmarkId = '{!! Auth::user()->getBookmark($room->id)['id'] !!}';
+            
+            destroy_route = '{{ route('bookmarks.destroy', 1) }}';
+            destroy_route = destroy_route.substring(0, destroy_route.length-1);
+            
+
+            $(document).on('click', '#save-btn', function(e){
+                e.preventDefault();
+                if ( bookmarkId !== '' ) {
+                    $.ajax({
+                        url: destroy_route + bookmarkId,
+                        type: 'DELETE',
+                        success: function(data) {
+                            $('#save-text').text('Save');
+                            bookmarkId = data['bookmark_id'];
+                        }
+                    })
+                } else {
+                    $.ajax({
+                        url: '{{ route('bookmarks.store') }}',
+                        type: 'POST',
+                        data: {'room_id': '{{$room->id}}', 'user_id': '{{Auth::user()->id}}'},
+                        success: function(data) {
+                            $('#save-text').text('Saved');
+                            bookmarkId = data['bookmark_id'];
+                        }
+                    })
+                }
+            });
+        })
+    </script>
 @endsection

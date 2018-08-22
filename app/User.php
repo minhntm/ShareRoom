@@ -82,4 +82,15 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Message', 'from');
     }
+
+    public function getBookmark($roomId)
+    {
+        $bookmarks = $this->bookmarks()->get();
+        foreach ($bookmarks as $bookmark) {
+            if ($bookmark->room_id === $roomId) {
+                return $bookmark;
+            }
+        }
+        return null;
+    }
 }
