@@ -101,6 +101,31 @@ html, body {
     overflow: hidden;
     display: flex;
 }
+.chat .avatar {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    display: block;
+    z-index: 2;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    background-color: rgba(255,255,255,0.9);
+}
+.chat .avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    background-color: rgba(255,255,255,0.9);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
 .chat .day {
     position: relative;
     display: block;
@@ -159,18 +184,19 @@ html, body {
 }
 
 .other .msg {
+    order: 1;
     border-top-left-radius: 0px;
-    box-shadow: -1px 2px 0px #c1cbcd;
+    box-shadow: -1px 2px 0px #D4D4D4;
 }
 .other:before {
     content: "";
     position: relative;
     top: 0px;
     right: 0px;
-    left: 0px;
+    left: 40px;
     width: 0px;
     height: 0px;
-    border: 5px solid #eef8ff;
+    border: 5px solid #fff;
     border-left-color: transparent;
     border-bottom-color: transparent;
 }
@@ -180,22 +206,25 @@ html, body {
     align-items: flex-end;
 }
 .self .msg {
+    order: 1;
     border-bottom-right-radius: 0px;
-    box-shadow: 1px 2px 0px #c1cbcd;
+    box-shadow: 1px 2px 0px #D4D4D4;
 }
-.self:after {
+.self .avatar {
+    order: 2;
+}
+.self .avatar:after {
     content: "";
     position: relative;
     display: inline-block;
-    float: right;
-    bottom: 0px;
+    bottom: 19px;
     right: 0px;
     width: 0px;
     height: 0px;
-    border: 5px solid #eef8ff;
+    border: 5px solid #fff;
     border-right-color: transparent;
     border-top-color: transparent;
-    box-shadow: 0px 2px 0px #c1cbcd;
+    box-shadow: 0px 2px 0px #D4D4D4;
 }
 
 .msg {

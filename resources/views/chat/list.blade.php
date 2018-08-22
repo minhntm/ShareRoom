@@ -12,7 +12,7 @@
                 <div class="staff-box-2 staff-box-1">
                     <!-- Staff img -->
                     <a href="#" class="teachers-img">
-                        <img src="images/staff/staff-1.jpg" alt="staff-1" class="img-responsive">
+                        <img src="img/users/staff-1.jpg" alt="staff-1" class="img-responsive">
                     </a>
                     <!-- Staff content -->
                     <div class="content">
