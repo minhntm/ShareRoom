@@ -3475,8 +3475,7 @@ blockquote {
 
 /** SUB BANNER AREA START **/
 .sub-banner {
-    background: rgba(0, 0, 0, 0.04) url(../img/banner/banner-slider-2.jpg) top left repeat;
-    background-size: cover;
+    background-size: contain !important;
     height: 600px;
     background-position: center center;
     background-repeat: no-repeat;

@@ -1,7 +1,7 @@
 @extends('layouts.showRoom-master')
 @section('content')
     <!-- Sub banner start -->
-    <div class="sub-banner">
+    <div class="sub-banner" style="background: rgba(0, 0, 0, 0.04) url({{ asset('' . '/images/' . $room->photos()->get()[0]->filename) }}) top left repeat;">
         <div class="container">
             <div class="sub-banner-button-area-1">
                 <button type="button" class="btn btn-light sub-banner-button-1">View Photos</button>
