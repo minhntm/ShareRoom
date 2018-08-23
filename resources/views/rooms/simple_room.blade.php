@@ -11,7 +11,16 @@
                     <i class="fa fa-star"></i>
                 </div>
             </div>
-            <p>{{ $room->roomType()->get()[0]->type }}</p>
+            <div>
+                <span>{{ $room->roomType()->get()[0]->type }}</span>
+                @if (Auth::user()->id === $room->owner()->get()[0]->id)
+                    <a onclick="event.preventDefault(); document.getElementById('form-{{$room->id}}').submit();" style="float:right;">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                    {{ Form::open(['method' => 'DELETE', 'url' => route('rooms.destroy', $room->id), 'id' => 'form-' . $room->id]) }}
+                    {{ Form::close() }}
+                @endif
+            </div>
             <h3>
                 <a href="{{ route('rooms.show', $room->id) }}">{{ $room->name }}</a>
             </h3>
