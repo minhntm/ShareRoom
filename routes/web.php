@@ -76,3 +76,5 @@ Route::get('test', function () {
     event(new App\Events\StatusLiked('Someone'));
     return "Event has been sent!";
 });
+
+Route::get('/search', 'PageController@search')->name('search');

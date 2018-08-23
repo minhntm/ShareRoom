@@ -357,3 +357,29 @@ input[type=checkbox]:checked {
 .liked {
     color: #bc3a33 !important;
 }
+#wrapper { 
+  width: 80%;
+  margin:0 auto;
+}
+
+#sidebar {
+  float:right;
+  width:30%;
+}
+
+#sidebar #widget {
+  width:340px;
+  height: 600px;
+  margin-bottom:10px;
+  border-bottom:1px solid #ccc;
+}
+
+#article {
+  width:50%;
+}
+.map_price {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #00A699;
+}

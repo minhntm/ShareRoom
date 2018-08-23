@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Room extends Model
 {
@@ -70,5 +71,28 @@ class Room extends Model
             }
             return $star / count($reviews);
         }
+    }
+
+    public function notAvailable($start_date, $end_date)
+    {
+        // $not_available = $this->reservations->where(function($query) {
+        //     $query->where($start_date, '<=', 'start_date')->where('start_date', '<=', $end_date);
+        // })->orWhere(function($query) {
+        //     $query->where($start_date, '<=', 'end_date')->where('end_date', '<=', $end_date);
+        // })->orWhere(function($query) {
+        //     $query->where('start_date', '<', $start_date)->where($end_date, '<', 'end_date');
+        // })->limit(1)->get();
+
+        $not_available = DB::select( DB::raw("SELECT * FROM reservations WHERE ((:start1 <= start_date AND start_date <= :end1) OR (:start2 <= end_date AND end_date <= :end2) OR (start_date < :start3 AND :end3 < end_date))"), 
+        [
+            'start1' => $start_date,
+            'end1' => $end_date,
+            'start2' => $start_date,
+            'end2' => $end_date,
+            'start3' => $start_date,
+            'end3' => $end_date,
+        ]);
+
+        return $not_available;
     }
 }

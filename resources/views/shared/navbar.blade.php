@@ -6,8 +6,8 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav ml-auto">
                 <li>
-                    {{ Form::open(['method' => 'POST', 'url' => '', ]) }}
-                        {!! Form::text('search', old('search'), ['id' => 'search', 'placeholder' => 'Where do you want to go?']) !!}
+                    {{ Form::open(['method' => 'GET', 'url' => route('search')]) }}
+                        {!! Form::text('location', Request::get('location'), ['id' => 'search', 'placeholder' => 'Where do you want to go?']) !!}
                     {{ Form::close() }}
                 </li>
                 <li class="nav-item"><a href="{{ route('rooms.create') }}" class="nav-link">{!! trans('app.become-a-host') !!}</a></li>
