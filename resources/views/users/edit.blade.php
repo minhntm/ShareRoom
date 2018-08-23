@@ -9,7 +9,7 @@
                         <div class="card-header sidebar-header">
                             {{ trans('app.edit-profile') }}
                         </div>
-                        <a href="{{ route('upload') }}" class="list-group-item list-group-item-action sidebar-item">{{ trans('app.photo') }}</a>
+                        <a href="{{ route('avatar') }}" class="list-group-item list-group-item-action sidebar-item">{{ trans('app.photo') }}</a>
                         <a href="{{ route('rooms.index') }}" class="list-group-item list-group-item-action sidebar-item">{{ trans('app.room') }}</a>
                         <a href="{{ route('users.reservation.index', ['user' => $user->id]) }}" class="list-group-item list-group-item-action sidebar-item">{{ trans('app.reservation') }}</a>
                         <a href="#" class="list-group-item list-group-item-action sidebar-item">{{ trans('app.references') }}</a>

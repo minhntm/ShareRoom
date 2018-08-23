@@ -160,7 +160,8 @@
                             <div class="main-title-2">
                                 <h1>Reviews</h1>
                             </div>
-                            @each('reviews.show', $reviews, 'review')
+                            <div id="all-reviews"></div>
+                            <!-- @each('reviews.show', $reviews, 'review') -->
 
                             @include('reviews.form', ['room' => $room])
                         </div>
@@ -214,6 +215,7 @@
             });
 
             $(document).ready(function() {
+                fetchAllReviews();
                 bookmarkId = '{!! Auth::user()->getBookmark($room->id)['id'] !!}';
                 
                 destroy_route = '{{ route('bookmarks.destroy', 1) }}';
@@ -244,6 +246,16 @@
                     }
                 });
             })
+
+            function fetchAllReviews() {
+                $.ajax({
+                    url: '{{ route('reviews.all', ['id' => $room->id]) }}',
+                    type: 'GET',
+                    success: function(data) {
+                        $('#all-reviews').html(data);
+                    }
+                })
+            };
         </script>
     @endauth
 
