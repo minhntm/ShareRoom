@@ -14,11 +14,9 @@
                     @auth
                         <div class="comment-meta-delete">
                             @if (Auth::user()->id === $review->user()->get()[0]->id)
-                                <a onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
+                                <a id="delete-form-{{$review->id}}" onclick="event.preventDefault(); deleteComment();">
                                     <i class="fas fa-trash"></i>
                                 </a>
-                                {{ Form::open(['id' => 'delete-form', 'method' => 'DELETE', 'url' => route('rooms.reviews.destroy', ['room' => $review->room()->get()[0]->id, 'review' => $review->id])]) }}
-                                {{ Form::close() }}
                             @endif
 
                         </div>
@@ -224,4 +222,18 @@
             }
         })
     })
+
+    function deleteComment(){
+        $.ajax({
+            url: '{{ route('reviews.delete') }}',
+            method: 'DELETE',
+            data: {
+                room_id: "{{ $review->room()->get()[0]->id }}",
+                review_id: "{{ $review->id }}",
+            },
+            success: function(data) {
+                fetchAllReviews();
+            }
+        })
+    }
 </script>

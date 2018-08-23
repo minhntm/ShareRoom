@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReviewFormRequest;
+use Illuminate\Support\Facades\Response;
 use App\Review;
+use App\Room;
 
 class ReviewController extends Controller
 {
@@ -41,7 +43,10 @@ class ReviewController extends Controller
         $user_id = Auth::user()->id;
         $data['user_id'] = $user_id;
         $review = Review::create($data);
-        return redirect()->route('rooms.show', $request->room_id);
+        
+        return Response::json([
+            'message' => 'Added review',
+        ], 200);
     }
 
     /**
@@ -52,7 +57,12 @@ class ReviewController extends Controller
      */
     public function show($id)
     {
-        //
+        $room = Room::findOrFail($id);
+        if (isset($room)) {
+            $reviews = $room->reviews()->get();
+        }
+
+        return view('reviews.all', compact('reviews'));
     }
 
     /**
@@ -84,10 +94,15 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($room_id, $review_id)
+    public function destroy(Request $request)
     {
+        $room_id = $request->get('room_id');
+        $review_id = $request->get('review_id');
         $review = Review::findOrFail($review_id);
         $review->delete();
-        return redirect()->route('rooms.show', $room_id);
+        
+        return Response::json([
+            'message' => 'Deleted review',
+        ], 200);
     }
 }

@@ -93,4 +93,9 @@ class User extends Authenticatable
         }
         return null;
     }
+
+    public function avatar()
+    {
+        return $this->hasOne('App\Avatar');
+    }
 }

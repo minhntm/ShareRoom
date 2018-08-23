@@ -30,7 +30,6 @@
                             @endrole
                             <a class="dropdown-item fix-dropdown-item" href="{{ route('users.edit', Auth::user()->id) }}">{!! trans('app.edit-profile') !!}</a>
                             <a class="dropdown-item fix-dropdown-item" href="#">{!! trans('app.acount-setting') !!}</a>
-                            <a class="dropdown-item fix-dropdown-item" href="{{route('upload')}}">{!! trans('app.upload-image') !!}</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item fix-dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

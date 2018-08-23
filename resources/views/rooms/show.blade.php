@@ -160,7 +160,8 @@
                             <div class="main-title-2">
                                 <h1>Reviews</h1>
                             </div>
-                            @each('reviews.show', $reviews, 'review')
+                            <div id="all-reviews"></div>
+                            <!-- @each('reviews.show', $reviews, 'review') -->
 
                             @include('reviews.form', ['room' => $room])
                         </div>
@@ -223,6 +224,19 @@
                     })
                 }
             });
+
+            fetchAllReviews();
+            
         })
+
+        function fetchAllReviews() {
+            $.ajax({
+                url: '{{ route('reviews.all', ['id' => $room->id]) }}',
+                type: 'GET',
+                success: function(data) {
+                    $('#all-reviews').html(data);
+                }
+            })
+        };
     </script>
 @endsection

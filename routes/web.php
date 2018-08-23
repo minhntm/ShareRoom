@@ -25,9 +25,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/rooms/{id}', 'RoomController@destroy')->name('rooms.destroy');
     Route::post('/rooms/upload', 'RoomController@uploadImage')->name('upload');
     Route::post('/rooms/delete', 'RoomController@destroyImage');
+    Route::get('/avatar', 'UserController@avatar')->name('avatar');
+    Route::post('/avatar', 'UserController@uploadAvatar')->name('avatar');
+    Route::post('/avatar/delete', 'UserController@deleteAvatar');
+    Route::get('/{id}/allreviews', 'ReviewController@show')->name('reviews.all');
+    Route::post('/reviews', 'ReviewController@store')->name('reviews.store');
+    Route::delete('/reviews', 'ReviewController@destroy')->name('reviews.delete');
 
     Route::resource('users', 'UserController')->only([
-        'edit', 'show', 'update', 'showReservation'
+        'edit', 'show', 'update', 'showReservation',
     ]);
 
     Route::resource('rooms.reservations', 'ReservationController')->only([
@@ -36,10 +42,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('users.reservation', 'ReservationController')->only([
         'index', 'destroy'
-    ]);
-
-    Route::resource('rooms.reviews', 'ReviewController')->only([
-        'store', 'destroy'
     ]);
 
     Route::resource('likes', 'LikeController')->only([
