@@ -155,8 +155,13 @@ class RoomController extends Controller
     public function destroy($id)
     {
         $room = Room::findOrFail($id);
+        $distances = Distance::where('room1_id', '=', $room->id)->orWhere('room2_id', '=', $room->id)->get();
+        foreach ($distances as $distance) {
+            $distance->delete();
+        }
         $room->delete();
         toastr()->success(trans('Your room has been deleted!'), 'Status');
+
 
         return redirect()->route('rooms.index')->with('status', trans('Your room has been deleted!'));
     }

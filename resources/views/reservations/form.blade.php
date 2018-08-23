@@ -36,6 +36,7 @@
     {{ Form::submit(trans('app.booking'), ['id' => 'btn_book', 'class' => 'btn btn-primary btn-theme wide', 'disabled' => 'true']) }}
 {{ Form::close() }}
 
+@if (Auth::user()->id !== $room->owner()->get()[0]->id)
 <script>
     function unavailable(date) {
         dmy = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
@@ -151,3 +152,4 @@
 
     })
 </script>
+@endif
