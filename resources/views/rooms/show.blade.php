@@ -161,7 +161,6 @@
                                 <h1>Reviews</h1>
                             </div>
                             <div id="all-reviews"></div>
-                            <!-- @each('reviews.show', $reviews, 'review') -->
 
                             @include('reviews.form', ['room' => $room])
                         </div>
