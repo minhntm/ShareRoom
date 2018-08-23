@@ -42,4 +42,14 @@ class Room extends Model
     {
         return $this->hasMany('App\Photo');
     }
+
+    public function distances()
+    {
+        return $this->hasMany('App\Distance', 'room1_id');
+    }
+
+    public function nearby($distanceRange, $limit)
+    {
+        return $this->distances()->where('distance', '<=', $distanceRange)->offset(0)->limit($limit)->get();
+    }
 }

@@ -193,7 +193,17 @@
                 </div>
             </div>
         </div>
+
+        <div class="container">
+        
+            <!-- Close by Rooms -->
+        <h3>Near by</h3>
+        <div class="row">
+            @each('rooms.simple_room', $nearby, 'room')
+        </div>
+        </div>
     </div>
+
 
     @auth
         <script>

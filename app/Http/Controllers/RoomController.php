@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Room;
 use App\RoomType;
 use App\City;
+use App\Distance;
 use App\Http\Requests\RoomFormRequest;
 use App\Repositories\CityRepository;
 use App\Repositories\RoomTypeRepository;
@@ -56,14 +57,31 @@ class RoomController extends Controller
         $imagesId = json_decode(json_decode($data['images_id'], true));
         unset($data['images_id']);
         $data['owner_id'] = $ownerId;
-        $room = Room::create($data);
+        $newRoom = Room::create($data);
         foreach ($imagesId as $imageId) {
             $photo = Photo::findOrFail($imageId);
-            $photo->room()->associate($room);
+            $photo->room()->associate($newRoom);
             $photo->save();
         }
 
-        return redirect()->route('rooms.show', $room->id)->with('status', trans('app.room-create-success'));
+        $rooms = Room::all();
+        foreach ($rooms as $room){
+            if ($room->id !== $newRoom->id){
+                $distance = $this->calDistance($newRoom->lat, $newRoom->long, $room->lat, $room->long, "K");
+                Distance::create([
+                    'room1_id' => $newRoom->id,
+                    'room2_id' => $room->id,
+                    'distance' => $distance,
+                ]);
+                Distance::create([
+                    'room1_id' => $room->id,
+                    'room2_id' => $newRoom->id,
+                    'distance' => $distance,
+                ]);
+            }
+        }
+
+        return redirect()->route('rooms.show', $newRoom->id)->with('status', trans('app.room-create-success'));
     }
 
     public function show($id)
@@ -72,10 +90,15 @@ class RoomController extends Controller
         if (isset($room)) {
             $photo = $room->photos()->first();
             $reviews = $room->reviews()->get();
+            $distances = $room->nearby(6, 5);
+            $nearby = [];
+            foreach ($distances as $distance){
+                array_push($nearby, Room::findOrFail($distance->room2_id));
+            }
         }
 
         if (isset($room)) {
-            return view('rooms.show', compact('room', 'photo', 'reviews'));
+            return view('rooms.show', compact('room', 'photo', 'reviews', 'nearby'));
         } else {
             return view('shared.error404');
         }
@@ -228,5 +251,23 @@ class RoomController extends Controller
     public function testShowRoom()
     {
         return view('rooms.test-show-room');
+    }
+
+    protected function calDistance($lat1, $lon1, $lat2, $lon2, $unit) {
+
+        $theta = $lon1 - $lon2;
+        $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+        $dist = acos($dist);
+        $dist = rad2deg($dist);
+        $miles = $dist * 60 * 1.1515;
+        $unit = strtoupper($unit);
+
+        if ($unit == "K") {
+            return ($miles * 1.609344);
+        } else if ($unit == "N") {
+            return ($miles * 0.8684);
+        } else {
+            return $miles;
+        }
     }
 }
