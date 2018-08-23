@@ -34,7 +34,7 @@
                 <div class="row">
                     <div class="col form-group">
                         {!! Form::label('name', trans('app.room-name'), ['class' => 'control-label']) !!}
-                        {!! Form::text('name', old('name'), ['placeholder' => trans('app.room-name-placeholder'), 'class' => 'form-control']) !!}
+                        {!! Form::text('name', old('name'), ['id' => 'name', 'placeholder' => trans('app.room-name-placeholder'), 'class' => 'form-control']) !!}
                     </div>
                 </div>
 
@@ -58,7 +58,7 @@
                 <div class="row">
                     <div class="col form-group">
                         {!! Form::label('address', trans('app.address'), ['class' => 'control-label']) !!}
-                        {!! Form::text('address', old('address'), ['placeholder' => trans('app.room-address-placeholder'), 'class' => 'form-control']) !!}
+                        {!! Form::text('address', old('address'), ['id' => 'address', 'placeholder' => trans('app.room-address-placeholder'), 'class' => 'form-control']) !!}
                     </div>
                 </div>
 
@@ -122,13 +122,46 @@
                 {!! Form::hidden('images_id', $id) !!}
                 {!! Form::hidden('verified', 0) !!}
 
+                {!! Form::hidden('lat', null, ['id' => 'lat']) !!}
+                {!! Form::hidden('long', null, ['id' => 'long']) !!}
+
                 <br>
                 <div class="actions text-center">
-                    {!! Form::submit(trans('app.save'), ['class' => 'btn btn-primary btn-theme']) !!}
+                    {!! Form::submit(trans('app.save'), ['id' => 'submit-btn', 'class' => 'btn btn-primary btn-theme']) !!}
                 </div>
 
             {!! Form::close() !!}
         </div>
     </div>
 </div>
+
+<script>
+    route = 'https://maps.googleapis.com/maps/api/geocode/json';
+    has_focus = false;
+
+    $("#address").focusin(function(){
+        has_focus = true;
+    });
+
+    $("#address").focusout(function(){
+        if (has_focus){
+            address = $('#address').val();
+            $.ajax({
+                url: route,
+                method: 'GET',
+                data: {'address': address, 
+                        'key': 'AIzaSyCU5Eypr-mIt9pW1nieA8g0yX8lBSpKAvc'
+                    },
+                success: function(data) {
+                    if (data['status'] === 'OK'){
+                        lat = data['results'][0]["geometry"]["location"]["lat"];
+                        long = data['results'][0]["geometry"]["location"]["lng"];
+                        $('#lat').val(lat);
+                        $('#long').val(long);
+                    }
+                }
+            })
+        }
+    });
+</script>
 @endsection

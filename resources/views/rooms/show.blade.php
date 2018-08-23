@@ -174,69 +174,97 @@
                     <!-- Sidebar start -->
                     <div class="sidebar right">
 
-                        <!-- Search area box 2 start -->
+                        <!-- Booking box start-->
                         <div class="sidebar-widget search-area-box-2 hidden-sm hidden-xs clearfix bg-grey ">
                             <div class="search-contents">
                                 @include('reservations.form', ['room' => $room])
                             </div>
                         </div>
-                        <!-- Search area box 2 end -->
+                        <!-- Booking box end -->
+
+                        <!-- Google map start-->
+                        <div class="row" style="margin:100px 15px 15px 15px;">
+                            <h3 style="width:100%; text-align:center;"><b>Find in map</b></h3>
+                            <div id="map" style="width: 100%; height: 400px; margin-top:20px"></div>
+                        </div>
+                        <!-- Google map end -->
                     </div>
                     <!-- Sidebar end -->
+
+                </div>
             </div>
         </div>
     </div>
 
-    <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        $(document).ready(function() {
-            bookmarkId = '{!! Auth::user()->getBookmark($room->id)['id'] !!}';
-            
-            destroy_route = '{{ route('bookmarks.destroy', 1) }}';
-            destroy_route = destroy_route.substring(0, destroy_route.length-1);
-            
-
-            $(document).on('click', '#save-btn', function(e){
-                e.preventDefault();
-                if ( bookmarkId !== '' ) {
-                    $.ajax({
-                        url: destroy_route + bookmarkId,
-                        type: 'DELETE',
-                        success: function(data) {
-                            $('#save-text').text('Save');
-                            bookmarkId = data['bookmark_id'];
-                        }
-                    })
-                } else {
-                    $.ajax({
-                        url: '{{ route('bookmarks.store') }}',
-                        type: 'POST',
-                        data: {'room_id': '{{$room->id}}', 'user_id': '{{Auth::user()->id}}'},
-                        success: function(data) {
-                            $('#save-text').text('Saved');
-                            bookmarkId = data['bookmark_id'];
-                        }
-                    })
+    @auth
+        <script>
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
 
-            fetchAllReviews();
-            
-        })
+            $(document).ready(function() {
+                fetchAllReviews();
+                bookmarkId = '{!! Auth::user()->getBookmark($room->id)['id'] !!}';
+                
+                destroy_route = '{{ route('bookmarks.destroy', 1) }}';
+                destroy_route = destroy_route.substring(0, destroy_route.length-1);
+                
 
-        function fetchAllReviews() {
-            $.ajax({
-                url: '{{ route('reviews.all', ['id' => $room->id]) }}',
-                type: 'GET',
-                success: function(data) {
-                    $('#all-reviews').html(data);
-                }
+                $(document).on('click', '#save-btn', function(e){
+                    e.preventDefault();
+                    if ( bookmarkId !== '' ) {
+                        $.ajax({
+                            url: destroy_route + bookmarkId,
+                            type: 'DELETE',
+                            success: function(data) {
+                                $('#save-text').text('Save');
+                                bookmarkId = data['bookmark_id'];
+                            }
+                        })
+                    } else {
+                        $.ajax({
+                            url: '{{ route('bookmarks.store') }}',
+                            type: 'POST',
+                            data: {'room_id': '{{$room->id}}', 'user_id': '{{Auth::user()->id}}'},
+                            success: function(data) {
+                                $('#save-text').text('Saved');
+                                bookmarkId = data['bookmark_id'];
+                            }
+                        })
+                    }
+                });
             })
-        };
+
+            function fetchAllReviews() {
+                $.ajax({
+                    url: '{{ route('reviews.all', ['id' => $room->id]) }}',
+                    type: 'GET',
+                    success: function(data) {
+                        $('#all-reviews').html(data);
+                    }
+                })
+            };
+        </script>
+    @endauth
+
+    <script>
+        function initialize() {
+        var location = {lat: {{$room->lat}}, lng: {{$room->long}}};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: location,
+            zoom: 14
+        });
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: '{{$room->name}}'
+        });
+        infoWindow.open(map, marker);
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 @endsection

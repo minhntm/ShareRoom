@@ -18,6 +18,7 @@
     <script src="{{ url('/js/general-navbar.js') }}"></script>
     <script src="{{ url('/bower_components/jquery-ui/ui/widgets/datepicker.js') }}"></script>
     <script src="{{ url('/bower_components/jquery-raty/lib/jquery.raty.js') }}"></script>
+    <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCU5Eypr-mIt9pW1nieA8g0yX8lBSpKAvc&libraries=places"></script> -->
     @yield('styles')
 </head>
 <body>

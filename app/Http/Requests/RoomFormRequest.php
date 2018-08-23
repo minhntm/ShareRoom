@@ -32,6 +32,8 @@ class RoomFormRequest extends FormRequest
             'bath_room' => 'required',
             'room_type' => 'required',
             'city_id' => 'required',
+            'lat' => 'required',
+            'long' => 'required',
         ];
     }
 }
