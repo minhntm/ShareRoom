@@ -1,9 +1,9 @@
 <div class="col-lg-4 col-md-4 col-sm-6">
     <div class="blog-1">
         <div class="blog-photo">
-            <img src={{ url('images/img-1.jpg') }} alt="img-3" class="img-responsive">
+            <img src="{{ asset($room->getFirstImageUrl()) }}" alt="img-3" class="img-responsive">
             <div class="profile-user">
-                <img src={{ url('images/avatar-3.jpg') }} alt="user">
+                <img src="{{ asset($room->owner()->get()[0]->getAvatarUrl()) }}" alt="user">
             </div>
         </div>
         <div class="detail">

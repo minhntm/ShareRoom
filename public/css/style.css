@@ -2485,7 +2485,7 @@ footer ul {
 
 .hotel-box .pr {
     position: absolute;
-    right: -120px;
+    right: 0;
     top: -60px;
     padding: 10px 15px;
     letter-spacing: 1px;

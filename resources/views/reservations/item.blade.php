@@ -1,7 +1,7 @@
 <div class="hotel-box-list">
     <div class="row">
         <div class="col-md-4">
-            <img src="{{ asset('images/demo.jpg') }}" alt="rooms-col-1" class="img-responsive">
+            <img src="{{ asset($reservation->room()->get()[0]->getFirstImageUrl()) }}" alt="rooms-col-1" class="img-responsive">
         </div>
         <div class="col-md-8 detail">
             <div class="heading">

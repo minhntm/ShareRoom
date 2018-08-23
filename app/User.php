@@ -98,4 +98,14 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Avatar');
     }
+
+    public function getAvatarUrl()
+    {
+        $avatar = $this->avatar()->first();
+        if ($avatar){
+            return '/images/' . $avatar->filename;
+        } else {
+            return '/img/users/user.png';
+        }
+    }
 }

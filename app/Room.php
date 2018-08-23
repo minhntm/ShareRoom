@@ -52,4 +52,23 @@ class Room extends Model
     {
         return $this->distances()->where('distance', '<=', $distanceRange)->offset(0)->limit($limit)->get();
     }
+
+    public function getFirstImageUrl()
+    {
+        return '/images/' . $this->photos()->get()[0]->filename;
+    }
+
+    public function rating()
+    {
+        $reviews= $this->reviews()->get();
+        if (count($reviews) === 0) {
+            return 0.0;
+        } else {
+            $star= 0.0;
+            foreach ($reviews as $review) {
+                $star = $star + $review->star;
+            }
+            return $star / count($reviews);
+        }
+    }
 }

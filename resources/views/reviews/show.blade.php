@@ -3,7 +3,7 @@
         <div class="comment">
             <div class="comment-author">
                 <a href="#">
-                    <img src="{{ url('img/users/user.png') }}" alt="avatar">
+                    <img src="{{ asset($review->user()->get()[0]->getAvatarUrl()) }}" alt="avatar">
                 </a>
             </div>
             <div class="comment-content">
@@ -32,33 +32,27 @@
                             @if (Auth::user()->getLike($review->id)->is_vote === 1)
                                 <a id="upvote-{{$review->id}}" class="liked">
                                     <i class="fas fa-arrow-up"></i>
-                                    <!-- <span id="upvote-count-{{$review->id}}">{{ count($review->upvotes) }}</span> -->
                                 </a> 
                                 <span id="up-downvote-subtract-{{$review->id}}">{{ $review->upvoteDownvoteSubtraction() }}</span>
                                 <a id="downvote-{{$review->id}}">
                                     <i class="fas fa-arrow-down"></i>
-                                    <!-- <span id="downvote-count-{{$review->id}}">{{ count($review->downvotes) }}</span> -->
                                 </a> 
                             @else
                                 <a id="upvote-{{$review->id}}">
                                     <i class="fas fa-arrow-up"></i>
-                                    <!-- <span id="upvote-count-{{$review->id}}">{{ count($review->upvotes) }}</span> -->
                                 </a> 
                                 <span id="up-downvote-subtract-{{$review->id}}">{{ $review->upvoteDownvoteSubtraction() }}</span>
                                 <a id="downvote-{{$review->id}}" class="liked">
                                     <i class="fas fa-arrow-down"></i>
-                                    <!-- <span id="downvote-count-{{$review->id}}">{{ count($review->downvotes) }}</span> -->
                                 </a> 
                             @endif
                         @else
                             <a id="upvote-{{$review->id}}">
                                 <i class="fas fa-arrow-up"></i>
-                                <!-- <span id="upvote-count-{{$review->id}}">{{ count($review->upvotes) }}</span> -->
                             </a> 
                             <span id="up-downvote-subtract-{{$review->id}}">{{ $review->upvoteDownvoteSubtraction() }}</span>
                             <a id="downvote-{{$review->id}}">
                                 <i class="fas fa-arrow-down"></i>
-                                <!-- <span id="downvote-count-{{$review->id}}">{{ count($review->downvotes) }}</span> -->
                             </a> 
                         @endif
                     @endif
@@ -91,8 +85,6 @@
         user_like_{{$review->id}} = '{!! Auth::user()->hasLike($review->id) !!}';
         is_vote_{{$review->id}} = '{!! Auth::user()->getLike($review->id)['is_vote'] !!}';
         like_id_{{$review->id}} = '{!! Auth::user()->getLike($review->id)['id'] !!}';
-        // upvote_count_{{$review->id}} = {{ count($review->upvotes) }};
-        // downvote_count_{{$review->id}} = {{ count($review->downvotes) }};
         upvote_downvote_subtraction_{{$review->id}} = {{ $review->upvoteDownvoteSubtraction() }};
 
         destroy_route = '{{ route('likes.destroy', 1) }}';
@@ -109,14 +101,11 @@
                     $.ajax({
                         url: destroy_route + like_id_{{$review->id}},
                         type: 'DELETE',
-                        // data: {'review_id': '{{$review->id}}', 'is_vote': '1'},
                         success: function(data) {
                             $('#upvote-{{$review->id}}').removeClass('liked');
                             user_like_{{$review->id}} = data['user_like'];
                             is_vote_{{$review->id}} = data['is_vote'];
                             like_id_{{$review->id}} = data['like_id'];
-                            // upvote_count_{{$review->id}}--;
-                            // $('#upvote-count-{{$review->id}}').text(''+upvote_count_{{$review->id}});
                             upvote_downvote_subtraction_{{$review->id}}--;
                             $('#up-downvote-subtract-{{$review->id}}').text(''+upvote_downvote_subtraction_{{$review->id}});
                         }
@@ -133,10 +122,6 @@
                             user_like_{{$review->id}} = data['user_like'];
                             is_vote_{{$review->id}} = data['is_vote'];
                             like_id_{{$review->id}} = data['like_id'];
-                            // upvote_count_{{$review->id}}++;
-                            // downvote_count_{{$review->id}}--;
-                            // $('#upvote-count-{{$review->id}}').text(''+upvote_count_{{$review->id}});
-                            // $('#downvote-count-{{$review->id}}').text(''+downvote_count_{{$review->id}});
                             upvote_downvote_subtraction_{{$review->id}} = upvote_downvote_subtraction_{{$review->id}} + 2;
                             $('#up-downvote-subtract-{{$review->id}}').text(''+upvote_downvote_subtraction_{{$review->id}});
                         }
@@ -153,8 +138,6 @@
                         user_like_{{$review->id}} = data['user_like'];
                         is_vote_{{$review->id}} = data['is_vote'];
                         like_id_{{$review->id}} = data['like_id'];
-                        // upvote_count_{{$review->id}}++;
-                        // $('#upvote-count-{{$review->id}}').text(''+upvote_count_{{$review->id}});
                         upvote_downvote_subtraction_{{$review->id}}++;
                         $('#up-downvote-subtract-{{$review->id}}').text(''+upvote_downvote_subtraction_{{$review->id}});
                     }
@@ -177,10 +160,6 @@
                             user_like_{{$review->id}} = data['user_like'];
                             is_vote_{{$review->id}} = data['is_vote'];
                             like_id_{{$review->id}} = data['like_id'];
-                            // upvote_count_{{$review->id}}--;
-                            // downvote_count_{{$review->id}}++;
-                            // $('#upvote-count-{{$review->id}}').text(''+upvote_count_{{$review->id}});
-                            // $('#downvote-count-{{$review->id}}').text(''+downvote_count_{{$review->id}});
                             upvote_downvote_subtraction_{{$review->id}} = upvote_downvote_subtraction_{{$review->id}} - 2;
                             $('#up-downvote-subtract-{{$review->id}}').text(''+upvote_downvote_subtraction_{{$review->id}});
                         }
@@ -189,14 +168,11 @@
                     $.ajax({
                         url: destroy_route + like_id_{{$review->id}},
                         type: 'DELETE',
-                        // data: {'review_id': '{{$review->id}}', 'is_vote': '0'},
                         success: function(data) {
                             $('#downvote-{{$review->id}}').removeClass('liked');
                             user_like_{{$review->id}} = data['user_like'];
                             is_vote_{{$review->id}} = data['is_vote'];
                             like_id_{{$review->id}} = data['like_id'];
-                            // downvote_count_{{$review->id}}--;
-                            // $('#downvote-count-{{$review->id}}').text(''+downvote_count_{{$review->id}});
                             upvote_downvote_subtraction_{{$review->id}}++;
                             $('#up-downvote-subtract-{{$review->id}}').text(''+upvote_downvote_subtraction_{{$review->id}});
                         }
@@ -213,8 +189,6 @@
                         user_like_{{$review->id}} = data['user_like'];
                         is_vote_{{$review->id}} = data['is_vote'];
                         like_id_{{$review->id}} = data['like_id'];
-                        // downvote_count_{{$review->id}}++;
-                        // $('#downvote-count-{{$review->id}}').text(''+downvote_count_{{$review->id}});
                         upvote_downvote_subtraction_{{$review->id}}--;
                         $('#up-downvote-subtract-{{$review->id}}').text(''+upvote_downvote_subtraction_{{$review->id}});
                     }

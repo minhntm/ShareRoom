@@ -6,7 +6,7 @@
             <div class="profile-usermenu">
                 <div class="card sidebar-card">
                     <div class="card-body">
-                        <center class="m-t-30"> <img src="{{ asset('/img/users/user.png') }}" class="rounded-circle" width="150" />
+                        <center class="m-t-30"> <img src="{{ asset($user->getAvatarUrl()) }}" class="rounded-circle" width="150" />
                             <h4 class="card-title m-t-10">{!! $user->name !!}</h4>
                         </center>
                     </div>
