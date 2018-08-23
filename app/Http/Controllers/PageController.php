@@ -23,7 +23,8 @@ class PageController extends Controller
 
     public function home()
     {
-        return view('pages.home');
+        $rooms = Room::all();
+        return view('pages.home', compact('rooms'));
     }
 
     public function search(Request $request)

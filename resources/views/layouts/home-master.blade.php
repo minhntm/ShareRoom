@@ -3,6 +3,8 @@
     <title> @yield('title') </title>
     <link rel="stylesheet" type="text/css" href="{{ url('/bower_components/bootstrap/dist/css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('/css/custom.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/blue-light-2.css') }}">
 </head>
 <body>
 @include('shared.navbar')

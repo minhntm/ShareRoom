@@ -1,7 +1,7 @@
-<div class="col-lg-4 col-md-4 col-sm-6">
+<div class="col-md-4">
     <div class="blog-1">
         <div class="blog-photo">
-            <img src="{{ asset($room->getFirstImageUrl()) }}" alt="img-3" class="img-responsive">
+            <img src="{{ asset($room->getFirstImageUrl()) }}" alt="img-3" class="img-responsive" style="height: 220px;">
             <div class="profile-user">
                 <img src="{{ asset($room->owner()->get()[0]->getAvatarUrl()) }}" alt="user">
             </div>
