@@ -63,12 +63,13 @@
                 </div>
 
                 <br>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col form-group">
                         {!! Form::label('city_id', trans('app.city'), ['class' => 'control-label']) !!}
                         {!! Form::select('city_id', $cities, null, ['placeholder' => trans('app.select'), 'class' => 'form-control']) !!}
                     </div>
-                </div>
+                </div> -->
+                {!! Form::hidden('city_id', 1) !!}
 
                 <br>
                 <div class="row">
@@ -114,8 +115,8 @@
                 <br>
                 <div class="row">
                     <div class="col form-group">
-                        {!! Form::hidden('active', 0) !!}
-                        {!! Form::checkbox('active', 1) !!} {{ trans('app.active') }}
+                        {!! Form::hidden('active', 1) !!}
+                        <!-- {!! Form::checkbox('active', 1) !!} {{ trans('app.active') }} -->
                     </div>
                 </div>
 

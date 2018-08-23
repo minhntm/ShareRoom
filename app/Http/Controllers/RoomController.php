@@ -91,7 +91,7 @@ class RoomController extends Controller
         if (isset($room)) {
             $photo = $room->photos()->first();
             $reviews = $room->reviews()->get();
-            $distances = $room->nearby(6, 5);
+            $distances = $room->nearby(6, 3);
             $nearby = [];
             foreach ($distances as $distance){
                 array_push($nearby, Room::findOrFail($distance->room2_id));

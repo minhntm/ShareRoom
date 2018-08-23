@@ -68,28 +68,22 @@
 
                     <hr>
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 {!! Form::label('room_type', trans('app.room-type'), ['class' => 'control-label']) !!}
                                 {!! Form::select('room_type', $roomTypes, Request::get('room_type'), ['id' => 'home_type', 'placeholder' => trans('app.select'), 'class' => 'form-control']) !!}
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 {!! Form::label('bed_room', trans('app.bedroom'), ['class' => 'control-label']) !!}
                                 {!! Form::select('bed_room', $numberSelection, Request::get('bed_room'), ['placeholder' => trans('app.select'), 'class' => 'form-control']) !!}
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 {!! Form::label('bath_room', trans('app.bathroom'), ['class' => 'control-label']) !!}
                                 {!! Form::select('bath_room', $numberSelection, Request::get('bath_room'), ['placeholder' => trans('app.select'), 'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                {!! Form::label('city_id', trans('app.city'), ['class' => 'control-label']) !!}
-                                {!! Form::select('city_id', $cities, Request::get('city_id'), ['placeholder' => trans('app.select'), 'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
