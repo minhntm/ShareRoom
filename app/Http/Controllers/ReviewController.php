@@ -45,7 +45,8 @@ class ReviewController extends Controller
         $review = Review::create($data);
         
         return Response::json([
-            'message' => 'Added review',
+            'message' => 'Added review sucessfully',
+            'title' => 'Success'
         ], 200);
     }
 
@@ -102,7 +103,8 @@ class ReviewController extends Controller
         $review->delete();
         
         return Response::json([
-            'message' => 'Deleted review',
+            'message' => 'Deleted review sucessfully',
+            'title' => 'Success'
         ], 200);
     }
 }

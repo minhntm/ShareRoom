@@ -36,4 +36,14 @@ class RoomFormRequest extends FormRequest
             'long' => 'required',
         ];
     }
+
+    protected function formatErrors(Validator $validator)
+    {
+        $messages = $validator->messages();
+        foreach ($messages->all() as $message) {
+            toastr()->error($message);
+        }
+
+        return $validator->errors()->all();
+    }
 }

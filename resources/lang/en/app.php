@@ -41,7 +41,7 @@ return [
     'enter-password-confirm' => 'Enter Password Confirm',
     'test1' => 'Main Description',
     'test2' => 'Roll on the floor purring your whiskers off intrigued by the shower burrow under covers, and play time, rub face on everything, intently sniff hand, or pelt around the house and up and down stairs chasing phantoms. Attack feet. Damn that dog shake treat bag under the bed drink water out of the faucet for lick butt love to play with owner\'s hair tie. Swat at dog give attitude.',
-    'not-found' => 'Not found!',
+    'not-found' => 'Not found',
     'yes' => 'Yes',
     'no' => 'No',
     'save' => 'Save',
@@ -87,9 +87,9 @@ return [
     'city' => 'City',
 
     // Room controller status
-    'room-create-success' => 'Your room has been created!',
-    'room-update-success' => 'Your room has been updated!',
-    'room-destroy-success' => 'Your room has been deleted!',
+    'room-create-success' => 'Your room has been created',
+    'room-update-success' => 'Your room has been updated',
+    'room-destroy-success' => 'Your room has been deleted',
     'create-room-step1' => 'Step 1: Choose room image',
     'create-room-step2' => 'Step 2: Fill information',
     'room-photo-error' => 'Please upload at least 1 image.',
@@ -97,7 +97,7 @@ return [
     // Admin
     'role-index-title' => 'Roles Manager',
     'all-role' => 'All Roles',
-    'role-empty' => 'There is no role!',
+    'role-empty' => 'There is no role',
     'id' => 'ID',
     'name' => 'Name',
     'email' => 'Email',
@@ -122,14 +122,14 @@ return [
     'dashboard' => 'Dashboard',
     'dashboard-content' => 'Here is your dashboard',
     'user-name' => 'User Name',
-    'user-update-success' => 'User has been updated!',
+    'user-update-success' => 'User has been updated',
     'user-delete-success' => 'Delete user successful',
-    'role-delete-success' => 'Delete role successfully!',
-    'error-role-exist' => 'Error: Role is existed!',
+    'role-delete-success' => 'Delete role successfully',
+    'error-role-exist' => 'Error: Role is existed',
     'create-role-success' => 'Create a role successfully',
     // money
     'dollar' => '$',
-    'role-exist' => 'Error: role existed!',
+    'role-exist' => 'Error: role existed',
     //user
     'references' => 'References',
     'photo' => 'Photos',
@@ -150,5 +150,5 @@ return [
 
     'show-price' => '$ :price /night',
     'delete' => 'Delete',
-    'delete-reservation-done' => 'Detele reservation successfully!'
+    'delete-reservation-done' => 'Detele reservation successfully'
 ];

@@ -29,4 +29,14 @@ class ReviewFormRequest extends FormRequest
             'comment' => 'required|min:5',
         ];
     }
+
+    protected function formatErrors(Validator $validator)
+    {
+        $messages = $validator->messages();
+        foreach ($messages->all() as $message) {
+            toastr()->error($message);
+        }
+
+        return $validator->errors()->all();
+    }
 }

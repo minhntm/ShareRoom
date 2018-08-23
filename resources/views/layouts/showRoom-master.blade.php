@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url('/fonts/flaticon/font/flaticon.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('/css/jquery-ui-1.10.0.custom.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('/bower_components/jquery-raty/lib/jquery.raty.css') }}">
+    @toastr_css
 
     <script src="{{ url('/bower_components/jquery/dist/jquery.js') }}"></script>
     <script src="{{ url('/bower_components/bootstrap/dist/js/bootstrap.js') }}"></script>
@@ -26,18 +27,10 @@
     @include('auth.login-modal')
     @include('auth.register-modal')
     <div class="show-room-content">
-        @foreach ($errors->all() as $error)
-            <p class="alert alert-danger">{{ $error }}</p>
-        @endforeach
-
-        @if (session('status'))
-            <div class="alert alert-success">
-                {{ session('status') }}
-            </div>
-        @endif
-
         @yield('content')
         @yield('scripts')
+        @toastr_js
+        @toastr_render
     </div>
 </body>
 </html>

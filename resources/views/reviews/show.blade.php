@@ -206,7 +206,18 @@
                 review_id: "{{ $review->id }}",
             },
             success: function(data) {
+                toastr.success(data.message, data.title);
                 fetchAllReviews();
+            },
+            error: function(data) {
+                console.log('asdfasdf')
+                console.log(data)
+                var errors = data.responseJSON.errors
+                for (let error in errors) {
+                    for (let subErr of errors[error]) {
+                        toastr.error(subErr, error.capitalize());
+                    }
+                }
             }
         })
     }

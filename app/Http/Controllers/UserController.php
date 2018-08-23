@@ -97,6 +97,7 @@ class UserController extends Controller
             $user->password = Hash::make($password);
         }
         $user->save();
+        toastr()->success(trans('app.user-update-success'), 'Status');
 
         return Redirect::route('users.edit', $user->id)->with('status', trans('app.user-update-success'));
     }

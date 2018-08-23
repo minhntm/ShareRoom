@@ -4,6 +4,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url('/bower_components/bootstrap/dist/css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('/css/custom.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('/bower_components/components-font-awesome/css/fontawesome-all.min.css') }}">
+    @toastr_css
     <!-- import template -->
     <link rel="stylesheet" type="text/css" href="{{ url('/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('/css/blue-light-2.css') }}">
@@ -12,6 +13,8 @@
 <body>
     @yield('content')
     @yield('scripts')
+    @toastr_js
+    @toastr_render
     <script src="{{ url('/bower_components/jquery/dist/jquery.js') }}"></script>
     <script src="{{ url('/bower_components/bootstrap/dist/js/bootstrap.js') }}"></script>
     <script src="{{ url('/js/general-navbar.js') }}"></script>
