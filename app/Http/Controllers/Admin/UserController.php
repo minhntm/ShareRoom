@@ -89,6 +89,7 @@ class UserController extends Controller
         }
         $user->save();
         $user->syncRoles($request->get('role'));
+        toastr()->success(trans('app.user-update-success'), 'Status');
 
         return Redirect::route('admin.users.edit', $user->id)->with('status', trans('app.user-update-success'));
     }
@@ -103,6 +104,7 @@ class UserController extends Controller
     {
         $users = User::findOrFail($id);
         $users->delete();
+        toastr()->success(trans('app.user-delete-success'), 'Status');
 
         return Redirect::route('admin.users.index', compact('users'))->with('status', trans('app.user-delete-success'));
     }

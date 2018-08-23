@@ -43,9 +43,12 @@ class RoleController extends Controller
         $role = Role::where('name', $request->get('name'))->get();
 
         if (!$role->isEmpty()) {
+            toastr()->success(trans('app.role-exist'), 'Role exist');
+
             return Redirect::route('admin.roles.index')->with('role-exist', trans('app.role-exist'));
         } else {
             Role::create(['name' => $request->get('name')]);
+            toastr()->success(trans('app.create-role-success'), 'Create role success');
 
             return Redirect::route('admin.roles.index')->with('create-role-success', trans('app.create-role-success'));
         }
@@ -95,6 +98,7 @@ class RoleController extends Controller
     {
         $roles = Role::findOrFail($id);
         $roles->delete();
+        toastr()->success(trans('app.role-delete-success'), 'Role delete success');
 
         return Redirect::route('admin.roles.index', compact('roles'))->with('role-delete-success', trans('app.role-delete-success'));
     }

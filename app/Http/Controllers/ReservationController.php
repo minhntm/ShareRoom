@@ -82,6 +82,7 @@ class ReservationController extends Controller
         $user_id = Auth::user()->id;
         $data['user_id'] = $user_id;
         $reservation = Reservation::create($data);
+        toastr()->success(trans('app.book-success'), 'Status');
 
         return redirect()->route('users.reservation.index', $user_id)->with('status', trans('app.book-success'));
     }
@@ -96,6 +97,8 @@ class ReservationController extends Controller
     {
         $reservation = Reservation::findOrFail($reservation_id);
         $reservation->delete();
+        toastr()->success(trans('app.delete-reservation-done'), 'Status');
+
         return redirect()->route('users.reservation.index', $user_id)->with('status', trans('app.delete-reservation-done'));
     }
 }

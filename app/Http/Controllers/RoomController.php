@@ -80,8 +80,9 @@ class RoomController extends Controller
                 ]);
             }
         }
+        toastr()->success(trans('app.room-create-success'), 'Status');
 
-        return redirect()->route('rooms.show', $newRoom->id)->with('status', trans('app.room-create-success'));
+        return redirect()->route('rooms.show', $newRoom->id);
     }
 
     public function show($id)
@@ -140,6 +141,7 @@ class RoomController extends Controller
         // dd($data);
         $room = Room::findOrFail($id);
         $room->update($data);
+        toastr()->success(trans('app.room-update-success'), 'Status');
 
         return redirect()->route('rooms.edit', $id)->with('status', trans('app.room-update-success'));
     }
@@ -154,6 +156,7 @@ class RoomController extends Controller
     {
         $room = Room::findOrFail($id);
         $room->delete();
+        toastr()->success(trans('Your room has been deleted!'), 'Status');
 
         return redirect()->route('rooms.index')->with('status', trans('Your room has been deleted!'));
     }

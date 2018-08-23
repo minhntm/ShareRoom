@@ -21,8 +21,19 @@
             method: 'POST',
             data: formData,
             success: function(data) {
+                toastr.success(data.message, data.title);
                 $('#submit-review')[0].reset();
                 fetchAllReviews();
+            },
+            error: function(data) {
+                console.log('asdfasdf')
+                console.log(data)
+                var errors = data.responseJSON.errors
+                for (let error in errors) {
+                    for (let subErr of errors[error]) {
+                        toastr.error(subErr, error.capitalize());
+                    }
+                }
             }
         })
     })

@@ -164,6 +164,7 @@ return [
 
         Collective\Html\HtmlServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        Yoeunes\Toastr\ToastrServiceProvider::class,
 
     ],
 
