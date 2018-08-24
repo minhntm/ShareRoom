@@ -8,9 +8,11 @@
             </div>
             <div class="sub-banner-button-area-2">
                 <div class="row">
-                    <div class="col-sm-5">
+                    <div class="col-sm-5" style="margin-right: 10px">
                         <div class="sub-banner-button-area-2-child">
-                            <button type="button" class="btn btn-light sub-banner-button-1">Share</button>
+                            <form action="{{ url('chat/'.$room->owner()->first()->id) }}">
+                                <input type="submit" value="Message" class="btn btn-light sub-banner-button-1"/>
+                            </form>
                         </div>
                     </div>
                     <div class="col-sm-5">

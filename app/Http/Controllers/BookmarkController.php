@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Bookmark;
 use Illuminate\Support\Facades\Response;
 use App\Http\Requests\BookmarkFormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class BookmarkController extends Controller
 {
@@ -16,7 +17,8 @@ class BookmarkController extends Controller
      */
     public function index()
     {
-        $bookmarks = Bookmark::all();
+        $user = Auth::user();
+        $bookmarks = $user->bookmarks()->get();
         return view('bookmarks.index', compact('bookmarks'));
     }
 
