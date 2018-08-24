@@ -12,10 +12,10 @@
                 <div class="staff-box-2 staff-box-1">
                     <!-- Staff img -->
                     <a href="#" class="teachers-img">
-                        <img src="{{ asset($user->getAvatarUrl()) }}" alt="staff-1" class="img-responsive">
+                        <img src="{{ asset($user->getAvatarUrl()) }}" alt="staff-1" class="img-responsive" style="height:270px;">
                     </a>
                     <!-- Staff content -->
-                    <div class="content">
+                    <div class="content" style="margin-top:15px;">
                         <!-- title -->
                         <h1 class="title">
                             <a href="{{ route('users.show', $user->id) }}">{{ $user->name }}</a>
