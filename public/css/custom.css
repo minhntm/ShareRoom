@@ -492,3 +492,19 @@ input[type=checkbox]:checked {
 .noti-item-content-message-title {
     font-weight: bold;
 }
+.custom-navbar {
+    margin-bottom: 12px;
+}
+
+.custom-search {
+    float: right;
+    margin-left: 119px !important;
+    font-weight: bold;
+    box-shadow: 0 0 4px grey;
+    border-radius: 25px !important;
+}
+
+.search-tran {
+    color: #ffff;
+    background-color: transparent;
+}

@@ -7,7 +7,7 @@
             <ul class="nav navbar-nav ml-auto">
                 <li>
                     {{ Form::open(['method' => 'GET', 'url' => route('search')]) }}
-                        {!! Form::text('location', Request::get('location'), ['id' => 'search', 'placeholder' => 'Where do you want to go?', 'autocomplete' => 'off']) !!}
+                        {!! Form::text('location', Request::get('location'), ['id' => 'search', 'placeholder' => 'Where do you want to go?', 'autocomplete' => 'off', 'class' => 'search-tran custom-search']) !!}
                     {{ Form::close() }}
                 </li>
                 <li class="nav-item"><a href="{{ route('rooms.create') }}" class="nav-link">{!! trans('app.become-a-host') !!}</a></li>
@@ -47,7 +47,7 @@
                         </div>
                     </li>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-secondary dropdown-toggle fix-btn-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-secondary dropdown-toggle fix-btn-dropdown custom-navbar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ Auth::user()->name }}
                         </button>
                         <div class="dropdown-menu dropdown-menu-right fix-dropdown-menu">
