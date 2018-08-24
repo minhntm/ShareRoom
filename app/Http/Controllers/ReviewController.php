@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReviewFormRequest;
 use Illuminate\Support\Facades\Response;
 use App\Review;
-use App\Room;
 
 class ReviewController extends Controller
 {

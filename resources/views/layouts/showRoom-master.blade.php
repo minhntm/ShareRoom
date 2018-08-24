@@ -44,7 +44,7 @@
             });
             var channel_user_reviewed = pusher_user_reviewed.subscribe('user-reviewed');
             var default_url = '{{ route('rooms.show', 1) }}';
-            var sub_url = default_url.substring(0, default_url-1);
+            var sub_url = default_url.substring(0, default_url.length-1);
             channel_user_reviewed.bind('App\\Events\\UserReviewed', function (data) {
                 var url = sub_url + data['review_room_id'];
 
@@ -100,7 +100,7 @@
             });
             var channel_review_upvote = pusher_review_upvoted.subscribe('review-upvoted');
             var default_url = '{{ route('rooms.show', 1) }}';
-            var sub_url = default_url.substring(0, default_url-1);
+            var sub_url = default_url.substring(0, default_url.length-1);
             channel_review_upvote.bind('App\\Events\\ReviewUpvoted', function (data) {
                 var url = sub_url + data['like_room_id'];
                 html = '<div class="dropdown-item-noti-container">\n' +
@@ -156,7 +156,7 @@
             });
             var channel_room_booked = pusher_room_booked.subscribe('room-booked');
             var default_url = '{{ route('rooms.show', 1) }}';
-            var sub_url = default_url.substring(0, default_url-1);
+            var sub_url = default_url.substring(0, default_url.length-1);
             channel_room_booked.bind('App\\Events\\RoomBooked', function (data) {
                 var url = sub_url + data['reservation_room_id'];
                 html = '<div class="dropdown-item-noti-container">\n' +
