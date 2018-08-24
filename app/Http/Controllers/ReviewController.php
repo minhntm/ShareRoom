@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserReviewed;
+use App\Notification;
+use App\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReviewFormRequest;
@@ -41,7 +44,16 @@ class ReviewController extends Controller
         $user_id = Auth::user()->id;
         $data['user_id'] = $user_id;
         $review = Review::create($data);
-        event(new App);
+
+        $noti_data['user_id'] = $review->user_id;
+        $noti_data['noti_id'] = $review->id;
+        $noti_data['noti_type'] = 0;
+        $noti_data['is_read'] = 0;
+        $review_to_id = Room::findOrFail(Review::findOrFail($noti_data['noti_id'])->room_id)->owner_id;
+        if ($noti_data['user_id'] != $review_to_id) {
+            $noti = Notification::create($noti_data);
+            event(new UserReviewed($noti));
+        }
         return redirect()->route('rooms.show', $request->room_id);
     }
 

@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ReviewUpvoted;
+use App\Notification;
+use App\Review;
+use App\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\LikeFormRequest;
@@ -24,6 +28,17 @@ class LikeController extends Controller
         $data = $request->all();
         $data['user_id'] = $userId;
         $like = Like::create($data);
+
+        $noti_data['user_id'] = $like->user_id;
+        $noti_data['noti_id'] = $like->id;
+        $noti_data['noti_type'] = 1;
+        $noti_data['is_read'] = 0;
+        $review = Review::findOrFail($like->review_id);
+        $like_to_id = $review->user_id;
+        if ($noti_data['user_id'] != $like_to_id) {
+            $noti = Notification::create($noti_data);
+            event(new ReviewUpvoted($noti));
+        }
 
         return Response::json([
             'status' => 'success',
@@ -70,6 +85,7 @@ class LikeController extends Controller
     {
         $like = Like::findOrFail($like_id);
         $like->delete();
+
         return Response::json([
             'status' => 'success',
             'user_like' => '0',
