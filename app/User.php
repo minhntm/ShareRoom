@@ -56,6 +56,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Like');
     }
 
+    public function notifications()
+    {
+        return $this->hasMany('App\Notification');
+    }
+
     public function hasLike($reviewId)
     {
         $likes = $this->likes()->get();

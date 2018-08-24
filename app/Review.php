@@ -23,6 +23,11 @@ class Review extends Model
         return $this->hasMany('App\Like');
     }
 
+    public function notification()
+    {
+        return $this->hasMany('App\Notification');
+    }
+
     public function upvotes()
     {
         return $this->likes()->where('is_vote', 1);

@@ -37,11 +37,4 @@
             }
         })
     })
-
-    // $(document).on('click', '#submit', function(e){
-    //     e.preventDefault();
-
-    // });
-
-    
 </script>

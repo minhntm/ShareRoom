@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\RoomBooked;
+use App\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReservationFormRequest;
@@ -83,6 +85,16 @@ class ReservationController extends Controller
         $data['user_id'] = $user_id;
         $reservation = Reservation::create($data);
         toastr()->success(trans('app.book-success'), 'Status');
+
+        $noti_data['user_id'] = $reservation->user_id;
+        $noti_data['noti_id'] = $reservation->id;
+        $noti_data['noti_type'] = 2;
+        $noti_data['is_read'] = 0;
+        $reservation_to_id = Room::findOrFail($reservation->room_id)->owner_id;
+        if ($noti_data['user_id'] != $reservation_to_id) {
+            $noti = Notification::create($noti_data);
+            event(new RoomBooked($noti));
+        }
 
         return redirect()->route('users.reservation.index', $user_id)->with('status', trans('app.book-success'));
     }

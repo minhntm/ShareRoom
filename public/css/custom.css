@@ -401,3 +401,94 @@ input[type=checkbox]:checked {
   vertical-align: middle;
   display: table-cell;
 }
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-top: 20px;
+    margin-right: 80px;
+    border-width: 1px 1px 1px;
+    border-style: none solid solid;
+    border-color: rgb(219, 219, 219) rgb(219, 219, 219) rgb(219, 219, 219);
+    border-top: none;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px;
+    width: 400px;
+    max-height: 550px;
+}
+.show {display: block;}
+.dropdown-item-noti {
+    font-size: 17px;
+    font-weight: normal;
+    color: rgb(118, 118, 118);
+    background-color: rgb(255, 255, 255);
+    border-bottom: 1px solid #dee2e6;
+    padding: 0px;
+    height: 100px;
+}
+.dropdown-item-noti-container {
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 100px;
+}
+.dropdown-item-noti-content {
+    height: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.dropdown-item-noti-header {
+    line-height: 40px;
+    background-color: white;
+    border-bottom: 1px solid #dee2e6;
+}
+.noti-header-content {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.noti-header-left {
+    font-size: 17px;
+    font-weight: bold;
+    color: black;
+    padding: 0px;
+}
+.noti-header-right {
+    font-size: 17px;
+    font-weight: bold;
+    color: #bc3a33;
+    text-align: right;
+}
+.noti-item-img {
+    float: left;
+    margin-right: 15px;
+    width: 80px;
+    height: 80px;
+    border: 1px solid #eee;
+}
+.noti-item-content {
+    max-width: 300px!important;
+    height: 80px!important;
+}
+.noti-item-img-resize {
+    width: 80px;
+    height: 80px;
+}
+.noti-item-content-type-message {
+    font-weight: normal;
+    width: 250px;
+    color: #bc3a33;
+}
+.noti-item-content-message {
+    font-weight: bold;
+    width: 250px;
+    height: 40px;
+}
+.noti-item-content-time {
+    color: #90949c;
+    position: absolute;
+    bottom: 0px;
+}
+.noti-item-content-message-title {
+    font-weight: bold;
+}

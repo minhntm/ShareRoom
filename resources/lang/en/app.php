@@ -150,5 +150,6 @@ return [
 
     'show-price' => '$ :price /night',
     'delete' => 'Delete',
-    'delete-reservation-done' => 'Detele reservation successfully'
+    'delete-reservation-done' => 'Detele reservation successfully!',
+    'notification' => 'Notifications',
 ];

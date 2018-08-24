@@ -4,13 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Reservation extends Model
+class Notification extends Model
 {
     protected $guarded = ['id'];
-
-    public function room()
+    public function review()
     {
-        return $this->belongsTo('App\Room');
+        return $this->belongsTo('App\Review');
     }
 
     public function user()
@@ -18,8 +17,8 @@ class Reservation extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function notification()
+    public function reservation()
     {
-        return $this->hasMany('App\Notification');
+        return $this->belongsTo('App\Reservation');
     }
 }
