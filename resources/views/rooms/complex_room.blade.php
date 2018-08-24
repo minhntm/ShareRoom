@@ -20,8 +20,7 @@
             <h3>
                 <a href="{{ route('rooms.show', $room->id ) }}">{{ $room->name }}</a>
             </h3>
-            <p>{{ substr($room->summary, 0, 120) }}</p>
-            <a href="{{ route('rooms.show', $room->id ) }}" class="read-more-btn">{{ trans('app.read-more') }}</a>
+            <p style="font-size:13px;">{{ substr($room->summary, 0, 120) }}</p>
         </div>
     </div>
 </div>

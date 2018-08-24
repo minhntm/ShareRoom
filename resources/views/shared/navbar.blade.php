@@ -7,7 +7,7 @@
             <ul class="nav navbar-nav ml-auto">
                 <li>
                     {{ Form::open(['method' => 'GET', 'url' => route('search')]) }}
-                        {!! Form::text('location', Request::get('location'), ['id' => 'search', 'placeholder' => 'Where do you want to go?']) !!}
+                        {!! Form::text('location', Request::get('location'), ['id' => 'search', 'placeholder' => 'Where do you want to go?', 'autocomplete' => 'off']) !!}
                     {{ Form::close() }}
                 </li>
                 <li class="nav-item"><a href="{{ route('rooms.create') }}" class="nav-link">{!! trans('app.become-a-host') !!}</a></li>
